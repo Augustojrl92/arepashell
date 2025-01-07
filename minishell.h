@@ -3,20 +3,181 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: layala-s <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/22 18:17:09 by layala-s          #+#    #+#             */
-/*   Updated: 2024/12/22 18:17:11 by layala-s         ###   ########.fr       */
+/*   Created: 2025/01/07 05:08:24 by aurodrig          #+#    #+#             */
+/*   Updated: 2025/01/07 14:19:52 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# define STATUS 1
-# define INPUT 1024
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-# include <readline/readline.h>
-# include <signal.h>
-# include <readline/history.h>
+
+
+#ifndef MINISHELL_H
+# define MINISHELL_H
+
+//-----------------------------------INCLUDE----------------------------------//
+
 # include <errno.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <dirent.h>
+# include <signal.h>
+# include <limits.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include <sys/wait.h>
+# include "automata.h"
+# include "lib/libft/libft.h"
+# include "readline/history.h"
+# include "readline/readline.h"
+
+//-----------------------------------DEFINES----------------------------------//
+
+extern int	g_signal_data;
+
+# ifndef FALSE
+#  define FALSE 0
+# endif
+
+# ifndef TRUE
+#  define TRUE 1
+# endif
+
+# ifndef SUCCESS
+#  define SUCCESS 0
+# endif
+
+# ifndef ERROR
+#  define ERROR 1
+# endif
+
+# ifndef CHILD
+#  define CHILD 0
+# endif
+
+# ifndef PATH_MAX
+#  define PATH_MAX 4096
+# endif
+
+# ifndef ARG_MAX
+#  define ARG_MAX 4096
+# endif
+
+
+# ifndef MSG_BYE
+#  define MSG_BYE "Bye!\n"
+# endif
+
+//-----------------------------DEFINING STRUCTURES----------------------------//
+
+typedef enum e_pipe_fd
+{
+	READ_END,
+	WRITE_END
+}	t_pipe_fd;
+
+typedef struct s_shell
+{
+	t_automata	splitter;
+	t_automata	expander;
+	t_automata	tokenizer;
+	t_tree		*token_tree;
+	t_list		*enviroment;
+	pid_t		last_pid;
+	int			child;
+	int			exit_status;
+	char		*readline;
+	char		**default_env;
+	char		**path_var;
+}	t_shell;
+
+typedef struct s_token
+{
+	t_shell		*shell;
+	int			append;
+	char		*line;
+	char		*cmd;
+	char		**args;
+	char		**infiles;
+	char		**heredoc;
+	char		**outfiles;
+	int			last_outf_fd;
+	int			last_inf_fd;
+	void		*data;
+}	t_token;
+
+//Enviroment variable (name, value)
+typedef struct s_var
+{
+	char		*name;
+	char		*value;
+}	t_var;
+
+//----------------------------------FUNCTIONS---------------------------------//
+
+//Enviroment funcions
+
+void	import_env(t_shell	*shell, char **env);
+void	add_new_var(t_list	*enviroment, t_var	*newvar);
+t_bool	find_var(void *content, void *context);
+char	*find_value(t_list	*env, char	*name);
+t_var	*create_var(char *name, char *value);
+void	update_default_env(t_shell	*shell);
+char	**get_path_var(t_shell	*shell);
+
+//Parsing functions
+
+int		split_in_token_lines(t_shell	*shell);
+void	tokenize_node(void	*token_ptr, void	*shell_ptr);
+void	expand_token(void	*token_ptr, void	*shell_ptr);
+void	expand_line(t_token	*token, t_shell	*shell, char	**str);
+
+//Executing functions
+
+void	exe_minishell_recursive(t_tree	*tree);
+void	wait_childs(t_token	*token, int twice);
+void	child_pipe_redir(t_tree *node, t_token *token, int pid, int fd[2]);
+void	exe_comand_node(t_token	*token, int pid);
+void	stdout_redirection(t_token	*token);
+void	stdin_stdout_reset(t_token	*token, int saved_std[2]);
+
+void	exe_built_in_with_redirs(t_shell	*shell, t_token	*token);
+int		is_built_in(char	*cmd);
+int		exe_built_in(void	*data, void	*context);
+void	exe_path_cmd(t_shell	*shell, t_token	*token);
+void	exe_cmd_or_built(t_shell	*shell, t_token	*token);
+
+//Built-in functions
+
+int		built_in_cd(t_shell *shell, t_token	*token);
+int		built_in_pwd(t_shell	*shell);
+int		built_in_env(t_shell	*shell);
+int		built_in_exit(t_shell	*shell, t_token	*token);
+int		built_in_echo(t_token	*token);
+int		built_in_unset(t_shell	*shell, t_token	*token);
+int		built_in_export(t_shell *shell, t_token	*token);
+
+
+
+//----------------------------------ERROR MSG---------------------------------//
+
+# define ERROR_EXIT 	"EXIT\n"
+
+//-----------------------------------DEFINES----------------------------------//
+
+# define CD_BUILT		"cd"
+# define ECHO_BUILT		"echo"
+# define ENV_BUILT		"env"
+# define EXIT_BUILT		"exit"
+# define EXPORT_BUILT	"export"
+# define PWD_BUILT		"pwd"
+# define UNSET_BUILT	"unset"
+# define PIPE_LINE		"|"
+# define ESCAPE_2		2
+# define ESCAPE_126		126
+# define ESCAPE_127		127
+
+
+
+#endif
