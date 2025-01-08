@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:08:58 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/07 05:08:59 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:55:02 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void splitter_errors_init(t_automata *a)
    // printf(">> [Errors] Error 5: %s\n", a->errors[5]);
     a->errors[6] = ft_strdup("\" Open");
     a->errors[7] = ft_strdup("\' Open");
+    a->errors[8] = ft_strdup("Invalid Input");
+	a->errors[9] = ft_strdup("Open operator");
     //printf(">> [Errors] Error 6: %s\n", a->errors[6]);
     //printf(">> [Errors] Error 7: %s\n", a->errors[7]);
     a->errors[10] = NULL;
@@ -92,17 +94,17 @@ void splitter_sactions_init(t_automata *a)
 }
 
 // Inicializa acciones de transición
-void splitter_tactions_init(t_automata *a)
+void	splitter_tactions_init(t_automata *a)
 {
-    //printf(">> [Init] Inicializando acciones de transición.\n");
-    a->fta[SP_PIPE][SP_SPACEPIPE] = get_token;
-   // printf(">> [Transitions] Acción asignada para SP_PIPE -> SP_SPACEPIPE\n");
-    a->fta[SP_PIPE][SP_WORDS] = get_token;
-    a->fta[SP_PIPE][SP_DOUBLEQ] = get_token;
-    a->fta[SP_PIPE][SP_SINGLEQ] = get_token;
-    a->fta[SP_PIPE][SP_LESS] = get_token;
-    a->fta[SP_PIPE][SP_GREAT] = get_token;
-    //printf(">> [Init] Acciones de transición inicializadas.\n");
+	a->fta[SP_PIPE][SP_SPACEPIPE] = get_token;
+	a->fta[SP_PIPE][SP_WORDS] = get_token;
+	a->fta[SP_PIPE][SP_DOUBLEQ] = get_token;
+	a->fta[SP_PIPE][SP_SINGLEQ] = get_token;
+	a->fta[SP_PIPE][SP_LESS] = get_token;
+	a->fta[SP_PIPE][SP_GREAT] = get_token;
+	a->fta[SP_SPACEB][SP_PIPE] = get_token;
+	a->fta[SP_SPACEW][SP_PIPE] = get_token;
+	a->fta[SP_WORDS][SP_PIPE] = get_token;
 }
 
 // Inicialización general del autómata

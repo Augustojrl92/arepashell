@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:08:10 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/07 05:08:11 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/08 20:39:53 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,13 @@ int	main(int ac, char **av, char **envp)
 	ft_bzero(&shell, sizeof(t_shell));
 	import_env(&shell, envp); // Importar variables de entorno
 
-	// Configurar manejadores de señales
-	//set_sig_handler(SIG_IGN, 1);
+
 
 	// Iniciar bucle principal
 	main_loop(&shell);
 	return (EXIT_SUCCESS);
 }
+
+
 
 

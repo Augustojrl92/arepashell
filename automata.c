@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:06:56 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/07 05:06:57 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/08 18:40:42 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,37 +37,17 @@ int	idx(char *alphabet[], char c)
 // Función para evaluar la entrada con el autómata
 int	evaluate(t_automata *a)
 {
-	//printf(">> evaluate: Iniciando evaluación...\n"); // Debug
 	a->ostate = 0;
 	a->i = -1;
-
-	if (!a->alphabet || !a->str) // Verificación de inicialización
-	{
-		//printf(">> evaluate: Error - Alphabet o str no inicializados.\n");
-		return (-1);
-	}
-
 	while (++a->i < (int)ft_strlen(a->str))
 	{
-		//printf(">> evaluate: Procesando carácter '%c' en posición %d\n", a->str[a->i], a->i); // Debug
-		int index = idx(a->alphabet, a->str[a->i]); // Llama a idx
-		a->state = a->get_state(a->state, index);
-
-		//printf(">> evaluate: Estado actual: %d, Estado anterior: %d\n", a->state, a->ostate); // Debug
-
+		a->state = a->get_state(a->state, idx(a->alphabet, a->str[a->i]));
 		if (a->fsa[a->state])
-		{
-			//printf(">> evaluate: Ejecutando acción de estado fsa[%d]\n", a->state); // Debug
 			a->fsa[a->state](a, a->data);
-		}
 		if (a->fta[a->ostate][a->state])
-		{
-			//printf(">> evaluate: Ejecutando acción de transición fta[%d][%d]\n", a->ostate, a->state); // Debug
 			a->fta[a->ostate][a->state](a, a->data);
-		}
 		a->ostate = a->state;
 	}
-	//printf(">> evaluate: Evaluación terminada. Estado final: %d\n", a->state); // Debug
 	return (a->state);
 }
 

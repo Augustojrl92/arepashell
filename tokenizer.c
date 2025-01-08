@@ -28,4 +28,3 @@ void	tokenize_node(void	*token_ptr, void	*shell_ptr)
 	evaluate(&shell->tokenizer);
 	free_alph_err(&shell->tokenizer);
 }
-// echo "anc" | ls
