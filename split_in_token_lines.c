@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:09:14 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/07 05:09:18 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/08 20:21:29 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	split_in_token_lines(t_shell *shell)
 	char		input[256];
 
 	// Solicitar entrada manual para pruebas
-	printf("Ingrese una cadena para probar el autómata: ");
+	printf("Ingrese una na para probar el autómata: ");
 	fgets(input, sizeof(input), stdin);
 	input[strcspn(input, "\n")] = 0;
 
