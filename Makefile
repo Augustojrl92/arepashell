@@ -31,6 +31,7 @@ SRCS = main.c \
 	exe_tokens.c \
 	exe_utils.c \
 	builtin.c \
+	stdin_redir.c \
 
 
 

@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:07:50 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/07 14:23:39 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:27:10 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	exe_comand_node(t_token	*token, int pid)
 			if (!pid)
 			{
 				//set_sig_handler(SIG_DFL, 1);
-				//stdin_redirection(token);
+				stdin_redirection(token);
 				stdout_redirection(token);
 				exe_path_cmd(token->shell, token);
 			}
@@ -115,7 +115,7 @@ void	exe_comand_node(t_token	*token, int pid)
 	}
 	else
 	{
-		//stdin_redirection(token);
+		stdin_redirection(token);
 		stdout_redirection(token);
 		exe_cmd_or_built(token->shell, token);
 	}

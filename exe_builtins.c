@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:07:24 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/08 20:38:43 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:50:39 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,40 +57,40 @@ int	exe_built_in(void	*data, void	*context)
 	return (shell->exit_status = 1);
 }
 
-//  int	dup_stdin(void)
-// {
-// 	int	saved_stdin;
+ int	dup_stdin(void)
+{
+	int	saved_stdin;
 
-// 	saved_stdin = dup(STDIN_FILENO);
-// 	if (saved_stdin == -1)
-// 	{
-// 		perror("dup stdin");
-// 		return (-1);
-// 	}
-// 	return (saved_stdin);
-// }
+	saved_stdin = dup(STDIN_FILENO);
+	if (saved_stdin == -1)
+	{
+		perror("dup stdin");
+		return (-1);
+	}
+	return (saved_stdin);
+}
 
-// int	dup_stdout(void)
-// {
-// 	int	saved_stdout;
+int	dup_stdout(void)
+{
+	int	saved_stdout;
 
-// 	saved_stdout = dup(STDOUT_FILENO);
-// 	if (saved_stdout == -1)
-// 	{
-// 		perror("dup stdout");
-// 		return (-1);
-// 	}
-// 	return (saved_stdout);
-// }
+	saved_stdout = dup(STDOUT_FILENO);
+	if (saved_stdout == -1)
+	{
+		perror("dup stdout");
+		return (-1);
+	}
+	return (saved_stdout);
+}
 
 void	exe_built_in_with_redirs(t_shell	*shell, t_token	*token)
 {
-	// int	saved_std[2];
+	int	saved_std[2];
 
-	// saved_std[0] = dup_stdin();
-	// saved_std[1] = dup_stdout();
-	// stdin_redirection(token);
-	// stdout_redirection(token);
+	saved_std[0] = dup_stdin();
+	saved_std[1] = dup_stdout();
+	stdin_redirection(token);
+	stdout_redirection(token);
 	exe_built_in(token, shell);
-	//stdin_stdout_reset(token, saved_std);
+	stdin_stdout_reset(token, saved_std);
 } 

@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:09:28 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/07 05:09:31 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/13 22:09:00 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@ void	set_infile(t_automata	*a, void	*data)
 {
 	t_token	*token;
 	char	*infile;
-	//char	*temp_filename;
+	char	*temp_filename;
 
 	token = (t_token *)data;
 	infile = get_next_word(a);
 	if (a->ostate == TK_HEREDOC)
 	{
-		//printf(">> [set_infile] Heredoc detectado. Ignorado temporalmente.\n");
-		token->infiles = ft_add_to_sarray(token->infiles, "heredoc_ignored");
+		temp_filename = do_heredoc(infile, token);
+		token->infiles = ft_add_to_sarray(token->infiles,temp_filename);
+		token->heredoc = ft_add_to_sarray(token->heredoc, temp_filename);
+		free(temp_filename);
 	}
 	else
 		token->infiles = ft_add_to_sarray(token->infiles, infile);

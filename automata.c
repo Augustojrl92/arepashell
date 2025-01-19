@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:06:56 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/08 18:40:42 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/19 19:39:32 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,17 @@
 
 #include "minishell.h"
 
-// Función para obtener el índice del carácter en el alfabeto
 int	idx(char *alphabet[], char c)
 {
 	int	i;
-
-	//printf(">> idx: Buscando '%c' en el alfabeto...\n", c); // Debug
 	i = -1;
 	while (alphabet[++i])
 	{
-		//printf(">> idx: Comparando con '%s'\n", alphabet[i]); // Debug
 		if (ft_chrpos(alphabet[i], c) != -1)
 		{
-			//printf(">> idx: Encontrado en posición %d\n", i); // Debug
 			return (i);
 		}
 	}
-	//printf(">> idx: No encontrado, devolviendo %d\n", i); // Debug
 	return (i);
 }
 

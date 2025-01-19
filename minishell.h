@@ -5,12 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 05:08:24 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/07 14:19:52 by aurodrig         ###   ########.fr       */
+/*   Created: 2024/06/04 20:40:50 by jlara-na          #+#    #+#             */
+/*   Updated: 2025/01/19 21:23:20 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
@@ -28,6 +26,7 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include "automata.h"
+
 # include "lib/libft/libft.h"
 # include "readline/history.h"
 # include "readline/readline.h"
@@ -64,18 +63,21 @@ extern int	g_signal_data;
 #  define ARG_MAX 4096
 # endif
 
+typedef enum e_pipe_fd
+{
+	READ_END,
+	WRITE_END
+}	t_pipe_fd;
+
+# ifndef M_SHELL_PROMPT
+#  define M_SHELL_PROMPT "$minishell:"
+# endif
 
 # ifndef MSG_BYE
 #  define MSG_BYE "Bye!\n"
 # endif
 
 //-----------------------------DEFINING STRUCTURES----------------------------//
-
-typedef enum e_pipe_fd
-{
-	READ_END,
-	WRITE_END
-}	t_pipe_fd;
 
 typedef struct s_shell
 {
@@ -130,8 +132,7 @@ char	**get_path_var(t_shell	*shell);
 
 int		split_in_token_lines(t_shell	*shell);
 void	tokenize_node(void	*token_ptr, void	*shell_ptr);
-void	expand_token(void	*token_ptr, void	*shell_ptr);
-void	expand_line(t_token	*token, t_shell	*shell, char	**str);
+
 
 //Executing functions
 
@@ -140,8 +141,10 @@ void	wait_childs(t_token	*token, int twice);
 void	child_pipe_redir(t_tree *node, t_token *token, int pid, int fd[2]);
 void	exe_comand_node(t_token	*token, int pid);
 void	stdout_redirection(t_token	*token);
+void	stdin_redirection(t_token	*token);
+char	*do_heredoc(char *str, t_token	*token);
+void	unlink_heredocs(void	*token_ptr, void	*shell_ptr);
 void	stdin_stdout_reset(t_token	*token, int saved_std[2]);
-
 void	exe_built_in_with_redirs(t_shell	*shell, t_token	*token);
 int		is_built_in(char	*cmd);
 int		exe_built_in(void	*data, void	*context);
@@ -158,7 +161,13 @@ int		built_in_echo(t_token	*token);
 int		built_in_unset(t_shell	*shell, t_token	*token);
 int		built_in_export(t_shell *shell, t_token	*token);
 
+//Utils
 
+char	*generate_prompt(void);
+void	free_env(t_shell	*shell);
+void	set_sig_handler(void (handler)(int signum), int sigquit_status);
+void	standard_handler(int signum);
+void	heredoc_handler(int signum);
 
 //----------------------------------ERROR MSG---------------------------------//
 
@@ -179,5 +188,5 @@ int		built_in_export(t_shell *shell, t_token	*token);
 # define ESCAPE_127		127
 
 
+# endif
 
-#endif

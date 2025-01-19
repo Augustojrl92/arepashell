@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:41:30 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/05 18:41:31 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:24:35 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,6 @@ void		splitter_sactions_init(t_automata *a);
 void		splitter_tactions_init(t_automata *a);
 void		splitter_automata_init(t_automata *a, void *data);
 
-//expander FT
-
-int			expander_get_state(int i, int j);
-void		expander_alphabet_init(t_automata *a);
-void		expander_errors_init(t_automata *a);
-void		expander_sactions_init(t_automata *a);
-void		expander_tactions_init(t_automata *a);
-void		expander_automata_init(t_automata *a, void *data);
 
 //TOKENIZER FT
 
@@ -67,8 +59,6 @@ void		tokenizer_automata_init(t_automata *a, void *data);
 
 //ACTIONS
 
-void		insert_var(t_automata *a, void *data);
-void		insert_chr(t_automata *a, void *data);
 void		get_token(t_automata *a, void *data);
 void		set_infile(t_automata	*a, void	*data);
 void		set_outfile(t_automata	*a, void	*data);
@@ -97,16 +87,7 @@ typedef enum e_sp_states
 	SP_SPACEPIPE
 }	t_sp_states;
 
-typedef enum e_ex_states
-{
-	EX_LOOKING,
-	EX_DOUBLEQ,
-	EX_SINGLEQ,
-	EX_DOLLAR_OUT,
-	EX_DOLLAR_IN,
-	EX_NAME_OUT,
-	EX_NAME_IN
-}	t_ex_states;
+
 
 typedef enum e_tk_states
 {
