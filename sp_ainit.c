@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:08:58 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/08 18:55:02 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:21:58 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void splitter_errors_init(t_automata *a)
 {
     //printf(">> [Init] Inicializando errores...\n");
     a->errors = malloc(11 * (sizeof(char *)));
-    a->errors[0] = ft_strdup("Syntax Error");
+    a->errors[0] = ft_strdup("\033[B");
     //printf(">> [Errors] Error 0: %s\n", a->errors[0]);
     a->errors[1] = ft_strdup("Pipe Open");
    // printf(">> [Errors] Error 1: %s\n", a->errors[1]);

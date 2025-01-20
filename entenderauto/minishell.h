@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 20:40:50 by jlara-na          #+#    #+#             */
-/*   Updated: 2025/01/13 21:23:12 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:09:33 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,8 +132,7 @@ char	**get_path_var(t_shell	*shell);
 
 int		split_in_token_lines(t_shell	*shell);
 void	tokenize_node(void	*token_ptr, void	*shell_ptr);
-void	expand_token(void	*token_ptr, void	*shell_ptr);
-void	expand_line(t_token	*token, t_shell	*shell, char	**str);
+
 
 //Executing functions
 
@@ -188,17 +187,6 @@ void	heredoc_handler(int signum);
 # define ESCAPE_126		126
 # define ESCAPE_127		127
 
-//--------------------------------CUSTOM HEADER-------------------------------//
 
-# ifndef HEADER
-#  define HEADER "\033[0m _______ __         __         __           __ __\n\
-|   |   |__|.-----.|__|.-----.|  |--.-----.|  |  |\n\
-|       |  ||     ||  ||__ --||     |  -__||  |  |\n\
-|__|_|__|__||__|__||__||_____||__|__|_____||__|__|\n\
-\n\
-            By \033[38:5:112mJLara-Na \033[0m& \033[38:5:177mBarJimen\n\033[0m\
-\n\
-You can use the command \"exit\" to leave minishell\n\n"
 # endif
 
-#endif

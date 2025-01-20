@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:08:58 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/14 22:34:39 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:16:59 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int splitter_get_state(int i, int j)
 void splitter_errors_init(t_automata *a)
 {
     a->errors = malloc(11 * (sizeof(char *)));
-    a->errors[0] = ft_strdup("Syntax Error");
+    a->errors[0] = ft_strdup("\033[A");
     a->errors[1] = ft_strdup("Pipe Open");
     a->errors[2] = ft_strdup("Less Open");
     a->errors[3] = ft_strdup("Heredoc Open");

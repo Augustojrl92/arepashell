@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:41:30 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/19 21:24:35 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/20 13:21:49 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ typedef enum e_sp_states
 	SP_WORDS,
 	SP_SPACEPIPE
 }	t_sp_states;
-
-
 
 typedef enum e_tk_states
 {
