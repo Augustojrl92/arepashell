@@ -49,18 +49,12 @@ void	main_loop(t_shell	*shell)
 	{
 		if (split_in_token_lines(shell))
 		{
-			// Procesar tokens en el árbol sintáctico
 			ft_tree_in_order_arg(shell->token_tree, tokenize_node, shell);
 			ft_tree_in_order_arg(shell->token_tree, expand_token, shell);
-			//Ejecutar comandos
 			if (shell->token_tree)
-			{
 				exe_minishell_recursive(shell->token_tree);
-			}
 			ft_tree_in_order_arg(shell->token_tree, unlink_heredocs, shell);
 		}
-
-		// Liberar memoria
 		ft_free_sarray(shell->default_env);
 		ft_free_sarray(shell->path_var);
 		free_tree(shell, shell->token_tree);
@@ -77,7 +71,7 @@ int	main(int ac, char **av, char **envp)
 
 	// Inicializar shell
 	ft_bzero(&shell, sizeof(t_shell));
-	import_env(&shell, envp); // Importar variables de entorno
+	import_env(&shell, envp);
 	// Iniciar bucle principal
 	main_loop(&shell);
 	return (EXIT_SUCCESS);

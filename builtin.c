@@ -14,9 +14,30 @@
 
 int built_in_cd(t_shell *shell, t_token *token)
 {
-    (void)shell;
-    (void)token;
-    printf("Builtin: cd\n");
+	int i = 0;
+    // (void)shell;
+	while (token->args[i])
+		i++;
+	if (i >= 2)
+		printf("cd: too many arguments");
+	i = 0;
+    while (token->args[i])
+	{
+		if (token->args[1] == NULL)
+		{
+			t_list *current = shell->enviroment;
+    		t_var *var;
+    		while (current)
+    		{
+        		var = (t_var *)current->content;
+        		if (var && var->name && strcmp(var->name, "HOME") == 0)
+            		chdir(var->value);
+        		current = current->next;
+    		}
+		}
+		// AUN FALTAN COSAS
+		i++;
+	}
     return (0);
 }
 
