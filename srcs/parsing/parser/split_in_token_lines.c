@@ -16,7 +16,7 @@ int	split_in_token_lines(t_shell	*shell)
 {
 	int		a_state;
 	char	*input;
-	input = readline("arepashell> ");
+	input = readline("\033[0;33marepashell> \033[0;0m");
 	if (input == NULL)
 	{
 		printf(MSG_BYE);
