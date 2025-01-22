@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#include "minishell.h"
+#include "./includes/minishell.h"
 
 int	quote_len(char	*str, char type)
 {

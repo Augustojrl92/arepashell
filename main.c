@@ -6,13 +6,11 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:08:10 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/13 21:46:32 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:46:17 by layala-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#include "minishell.h"
+#include "./includes/minishell.h"
 
 void	free_token(void	*data)
 {
@@ -44,22 +42,6 @@ void	free_tree(t_shell	*shell, t_tree	*tree)
 	}
 }
 
-//Imprimir el árbol sintáctico (para depuración)
-void	print_tree(t_tree *node, int depth)
-{
-	if (!node)
-		return;
-	for (int i = 0; i < depth; i++)
-		printf("  ");
-	t_token *token = (t_token *)node->data;
-	if (token && token->line)
-		printf("- Token: '%s'\n", token->line);
-	else
-		printf("- Nodo vacío.\n");
-	print_tree(node->left, depth + 1);
-	print_tree(node->right, depth + 1);
-}
-
 // Bucle principal
 void	main_loop(t_shell	*shell)
 {
@@ -69,15 +51,10 @@ void	main_loop(t_shell	*shell)
 		{
 			// Procesar tokens en el árbol sintáctico
 			ft_tree_in_order_arg(shell->token_tree, tokenize_node, shell);
-
-			//Mostrar el árbol sintáctico
-			printf("\n>> Árbol sintáctico generado:\n");
-			print_tree(shell->token_tree, 0);
-
+			ft_tree_in_order_arg(shell->token_tree, expand_token, shell);
 			//Ejecutar comandos
 			if (shell->token_tree)
 			{
-				printf("\n>> Ejecutando comandos...\n");
 				exe_minishell_recursive(shell->token_tree);
 			}
 			ft_tree_in_order_arg(shell->token_tree, unlink_heredocs, shell);
@@ -105,7 +82,3 @@ int	main(int ac, char **av, char **envp)
 	main_loop(&shell);
 	return (EXIT_SUCCESS);
 }
-
-
-
-

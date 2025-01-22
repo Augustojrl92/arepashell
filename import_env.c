@@ -10,9 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-#include "minishell.h"
+#include "./includes/minishell.h"
 
 char	**get_path_var(t_shell	*shell)
 {

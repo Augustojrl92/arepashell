@@ -16,28 +16,27 @@ LIBFT = $(LIBFT_DIR)/libft.a
 
 # Archivos fuente iniciales
 SRCS = main.c \
-	automata.c \
-	sp_ainit.c \
-	sp_actions.c \
-	split_in_token_lines.c \
-	tk_ainit.c \
-	tk_actions.c \
-	tokenizer.c \
+	./srcs/parsing/automata.c \
+	./srcs/parsing/parser/sp_ainit.c \
+	./srcs/parsing/parser/sp_actions.c \
+	./srcs/parsing/parser/split_in_token_lines.c \
+	./srcs/parsing/tokenizer/tk_ainit.c \
+	./srcs/parsing/tokenizer/tk_actions.c \
+	./srcs/parsing/tokenizer/tokenizer.c \
 	actions_utils.c \
 	import_env.c \
-	exe_builtins.c \
 	search_utils.c \
-	exe_cmd.c \
-	exe_tokens.c \
-	exe_utils.c \
+	./srcs/executors/exe_builtins.c \
+	./srcs/executors/exe_cmd.c \
+	./srcs/executors/exe_tokens.c \
+	./srcs/executors/exe_utils.c \
 	builtin.c \
 	stdin_redir.c \
-
-
-
-
-
-	
+	env.c \
+	./srcs/expansors/expander.c \
+	./srcs/expansors/exp_actions.c \
+	./srcs/expansors/exp_init.c \
+	export.c \
 
 # Archivos objeto (ubicados en obj/)
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))

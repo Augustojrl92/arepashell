@@ -6,13 +6,11 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:33:43 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/13 21:37:02 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/01/22 10:52:22 by layala-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
-  #include "minishell.h"
+#include "./includes/minishell.h"
 
 void	unlink_heredocs(void	*token_ptr, void	*shell_ptr)
 {
@@ -75,20 +73,16 @@ void	listen_and_write(t_token *token, char	*str, int fd)
 	(void)token;
 	char	*line;
 
-	//set_sig_handler(heredoc_handler, 0);
+
 	while (1)
 	{
 		line = readline(">");
-		// if (g_signal_data)
-		// {
-		// 	g_signal_data = 0;
-		// 	break ;
-		// }
+
 		if (!line || ft_samestr(str, line))
 			break ;
 		if (!ft_samestr("", line))
 		{
-			//expand_line(token, token->shell, &line);
+			expand_line(token, token->shell, &line);
 			ft_putstr_fd(line, fd);
 		}
 		ft_putchar_fd('\n', fd);
@@ -115,7 +109,5 @@ char	*do_heredoc(char *str, t_token	*token)
 		listen_and_write(token, str, fd);
 	else
 		wait(&exit_status);
-	// if (g_signal_data == SIGINT)
-	// 	return (NULL);
 	return (filename);
 } 

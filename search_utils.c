@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "./includes/minishell.h"
 
-
-#include "minishell.h"
 
 t_bool	find_var(void *content, void *context)
 {
