@@ -3,7 +3,7 @@ NAME = minishell
 
 # Compilador y flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror #-g3 -Iincludes
+CFLAGS = -fsanitize=address -Wall -Wextra -Werror -g3 -Iincludes
 
 # Comando para eliminar
 RM = rm -rf
@@ -23,6 +23,7 @@ SRCS = main.c \
 	./srcs/parsing/tokenizer/tk_ainit.c \
 	./srcs/parsing/tokenizer/tk_actions.c \
 	./srcs/parsing/tokenizer/tokenizer.c \
+	./srcs/builtins/cd_utils.c \
 	actions_utils.c \
 	import_env.c \
 	search_utils.c \

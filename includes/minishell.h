@@ -26,7 +26,8 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include "automata.h"
-
+# include <dirent.h>
+# include <sys/stat.h>
 # include "../lib/libft/libft.h"
 # include "readline/history.h"
 # include "readline/readline.h"
@@ -167,6 +168,8 @@ int		built_in_export(t_shell *shell, t_token	*token);
 //Utils
 
 char	*generate_prompt(void);
+void 	go_home(t_shell *shell);
+void	go_folder(t_token *token);
 void	free_env(t_shell	*shell);
 void	set_sig_handler(void (handler)(int signum), int sigquit_status);
 void	standard_handler(int signum);

@@ -15,28 +15,19 @@
 int built_in_cd(t_shell *shell, t_token *token)
 {
 	int i = 0;
-    // (void)shell;
+	// printf("%s\n", token->args[i]);
 	while (token->args[i])
 		i++;
-	if (i >= 2)
-		printf("cd: too many arguments");
-	i = 0;
-    while (token->args[i])
+	if (i > 2)
 	{
-		if (token->args[1] == NULL)
-		{
-			t_list *current = shell->enviroment;
-    		t_var *var;
-    		while (current)
-    		{
-        		var = (t_var *)current->content;
-        		if (var && var->name && strcmp(var->name, "HOME") == 0)
-            		chdir(var->value);
-        		current = current->next;
-    		}
-		}
-		// AUN FALTAN COSAS
-		i++;
+		printf("cd: too many arguments\n");
+		return (1);
+	}
+    if (token->args[1] == NULL) // Si no hay argumento, ve a HOME
+        go_home(shell);
+    else
+	{
+		go_folder(token);
 	}
     return (0);
 }
@@ -78,7 +69,11 @@ int built_in_exit(t_shell *shell, t_token *token)
 int built_in_pwd(t_shell *shell)
 {
     (void)shell;
-    printf("Builtin: pwd\n");
+    char buff[PATH_MAX + 1];
+    char *cwd;
+
+    cwd = getcwd(buff, PATH_MAX + 1);
+	printf("%s\n", cwd);
     return (0);
 }
 

@@ -12,7 +12,7 @@
 
 #include "../../includes/minishell.h"
 
-int	is_built_in(char	*cmd)
+int	is_built_in(char *cmd)
 {
 	if (ft_samestr(cmd, CD_BUILT))
 		return (1);
