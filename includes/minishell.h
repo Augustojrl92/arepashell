@@ -137,7 +137,6 @@ void	tokenize_node(void	*token_ptr, void	*shell_ptr);
 void	expand_token(void	*token_ptr, void	*shell_ptr);
 void	expand_line(t_token	*token, t_shell	*shell, char	**str);
 
-
 //Executing functions
 
 void	exe_minishell_recursive(t_tree	*tree);
@@ -168,7 +167,7 @@ int		built_in_export(t_shell *shell, t_token	*token);
 //Utils
 
 char	*generate_prompt(void);
-void 	go_home(t_shell *shell);
+void	go_home(t_shell *shell);
 void	go_folder(t_token *token);
 void	free_env(t_shell	*shell);
 void	set_sig_handler(void (handler)(int signum), int sigquit_status);
@@ -193,5 +192,4 @@ void	heredoc_handler(int signum);
 # define ESCAPE_126		126
 # define ESCAPE_127		127
 
-
-# endif
+#endif

@@ -70,14 +70,12 @@ void	stdin_redirection(t_token	*token)
 
 void	listen_and_write(t_token *token, char	*str, int fd)
 {
-	(void)token;
 	char	*line;
 
-
+	(void)token;
 	while (1)
 	{
 		line = readline(">");
-
 		if (!line || ft_samestr(str, line))
 			break ;
 		if (!ft_samestr("", line))
@@ -110,4 +108,4 @@ char	*do_heredoc(char *str, t_token	*token)
 	else
 		wait(&exit_status);
 	return (filename);
-} 
+}

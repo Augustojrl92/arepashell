@@ -68,7 +68,6 @@ void	child_pipe_redir(t_tree *node, t_token *token, int pid, int fd[2])
 	pid = fork();
 	if (!pid)
 	{
-
 		dup2(fd[WRITE_END], STDOUT_FILENO);
 		close(fd[READ_END]);
 		token->shell->child = 1;

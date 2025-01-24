@@ -12,10 +12,11 @@
 
 #include "./includes/minishell.h"
 
-int built_in_cd(t_shell *shell, t_token *token)
+int	built_in_cd(t_shell *shell, t_token *token)
 {
-	int i = 0;
-	// printf("%s\n", token->args[i]);
+	int	i;
+
+	i = 0;
 	while (token->args[i])
 		i++;
 	if (i > 2)
@@ -23,13 +24,11 @@ int built_in_cd(t_shell *shell, t_token *token)
 		printf("cd: too many arguments\n");
 		return (1);
 	}
-    if (token->args[1] == NULL) // Si no hay argumento, ve a HOME
-        go_home(shell);
-    else
-	{
+	if (token->args[1] == NULL)
+		go_home(shell);
+	else
 		go_folder(token);
-	}
-    return (0);
+	return (0);
 }
 
 int	built_in_echo(t_token	*token)
@@ -55,32 +54,29 @@ int	built_in_echo(t_token	*token)
 	return (EXIT_SUCCESS);
 }
 
-
-
-int built_in_exit(t_shell *shell, t_token *token)
+int	built_in_exit(t_shell *shell, t_token *token)
 {
-    (void)shell;
-    (void)token;
-    printf("Builtin: exit\n");
-    return (0);
+	(void)shell;
+	(void)token;
+	printf("Builtin: exit\n");
+	return (0);
 }
 
-
-int built_in_pwd(t_shell *shell)
+int	built_in_pwd(t_shell *shell)
 {
-    (void)shell;
-    char buff[PATH_MAX + 1];
-    char *cwd;
+	char	buff[PATH_MAX + 1];
+	char	*cwd;
 
-    cwd = getcwd(buff, PATH_MAX + 1);
+	(void)shell;
+	cwd = getcwd(buff, PATH_MAX + 1);
 	printf("%s\n", cwd);
-    return (0);
+	return (0);
 }
 
-int built_in_unset(t_shell *shell, t_token *token)
+int	built_in_unset(t_shell *shell, t_token *token)
 {
-    (void)shell;
-    (void)token;
-    printf("Builtin: unset\n");
-    return (0);
+	(void)shell;
+	(void)token;
+	printf("Builtin: unset\n");
+	return (0);
 }

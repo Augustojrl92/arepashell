@@ -12,6 +12,17 @@
 
 #include "../../includes/minishell.h"
 
+void	expander_automata_init(t_automata *a, void *data)
+{
+	ft_bzero(a, sizeof(t_automata));
+	a->data = data;
+	expander_alphabet_init(a);
+	expander_errors_init(a);
+	expander_sactions_init(a);
+	expander_tactions_init(a);
+	a->get_state = expander_get_state;
+}
+
 void	expand_line(t_token	*token, t_shell	*shell, char	**str)
 {
 	token->data = str;

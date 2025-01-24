@@ -12,7 +12,6 @@
 
 #include "./includes/minishell.h"
 
-
 t_bool	find_var(void *content, void *context)
 {
 	t_var	*var;

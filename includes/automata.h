@@ -45,7 +45,6 @@ void		splitter_sactions_init(t_automata *a);
 void		splitter_tactions_init(t_automata *a);
 void		splitter_automata_init(t_automata *a, void *data);
 
-
 //TOKENIZER FT
 
 int			tokenizer_get_state(int i, int j);
@@ -105,7 +104,6 @@ typedef enum e_ex_states
 	EX_NAME_OUT,
 	EX_NAME_IN
 }	t_ex_states;
-
 
 typedef enum e_tk_states
 {

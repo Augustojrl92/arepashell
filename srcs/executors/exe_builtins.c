@@ -55,7 +55,7 @@ int	exe_built_in(void	*data, void	*context)
 	return (shell->exit_status = 1);
 }
 
- int	dup_stdin(void)
+int	dup_stdin(void)
 {
 	int	saved_stdin;
 
@@ -91,4 +91,4 @@ void	exe_built_in_with_redirs(t_shell	*shell, t_token	*token)
 	stdout_redirection(token);
 	exe_built_in(token, shell);
 	stdin_stdout_reset(token, saved_std);
-} 
+}

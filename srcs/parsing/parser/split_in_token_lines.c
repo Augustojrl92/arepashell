@@ -12,10 +12,22 @@
 
 #include "../../../includes/minishell.h"
 
+void	splitter_automata_init(t_automata *a, void *data)
+{
+	ft_bzero(a, sizeof(t_automata));
+	a->data = data;
+	splitter_alphabet_init(a);
+	splitter_errors_init(a);
+	splitter_sactions_init(a);
+	splitter_tactions_init(a);
+	a->get_state = splitter_get_state;
+}
+
 int	split_in_token_lines(t_shell	*shell)
 {
 	int		a_state;
 	char	*input;
+
 	input = readline("\033[1;33;43marepashell>\033[0;0m ");
 	if (input == NULL)
 	{
@@ -31,7 +43,7 @@ int	split_in_token_lines(t_shell	*shell)
 		return (free_alph_err(&shell->splitter), 1);
 	else
 	{
-		printf( "%s\n", shell->splitter.errors[a_state]);
+		printf("%s\n", shell->splitter.errors[a_state]);
 		return (free_alph_err(&shell->splitter), 0);
 	}
 }

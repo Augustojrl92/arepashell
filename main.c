@@ -68,11 +68,8 @@ int	main(int ac, char **av, char **envp)
 
 	(void)ac;
 	(void)av;
-
-	// Inicializar shell
 	ft_bzero(&shell, sizeof(t_shell));
 	import_env(&shell, envp);
-	// Iniciar bucle principal
 	main_loop(&shell);
 	return (EXIT_SUCCESS);
 }

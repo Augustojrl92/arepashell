@@ -83,14 +83,3 @@ void	tokenizer_tactions_init(t_automata *a)
 	a->fta[TK_SPACEW][TK_DOUBLEQ] = set_arg;
 	a->fta[TK_SPACEW][TK_SINGLEQ] = set_arg;
 }
-
-void	tokenizer_automata_init(t_automata *a, void *data)
-{
-	ft_bzero(a, sizeof(t_automata));
-	a->data = data;
-	tokenizer_alphabet_init(a);
-	tokenizer_errors_init(a);
-	tokenizer_sactions_init(a);
-	tokenizer_tactions_init(a);
-	a->get_state = tokenizer_get_state;
-}

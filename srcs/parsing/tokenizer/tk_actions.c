@@ -23,7 +23,7 @@ void	set_infile(t_automata	*a, void	*data)
 	if (a->ostate == TK_HEREDOC)
 	{
 		temp_filename = do_heredoc(infile, token);
-		token->infiles = ft_add_to_sarray(token->infiles,temp_filename);
+		token->infiles = ft_add_to_sarray(token->infiles, temp_filename);
 		token->heredoc = ft_add_to_sarray(token->heredoc, temp_filename);
 		free(temp_filename);
 	}

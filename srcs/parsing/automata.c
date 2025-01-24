@@ -27,7 +27,6 @@ int	idx(char *alphabet[], char c)
 	return (i);
 }
 
-// Función para evaluar la entrada con el autómata
 int	evaluate(t_automata *a)
 {
 	a->ostate = 0;
@@ -44,7 +43,6 @@ int	evaluate(t_automata *a)
 	return (a->state);
 }
 
-// Función para liberar memoria usada en alfabetos y errores
 void	free_alph_err(t_automata *a)
 {
 	int	i;
