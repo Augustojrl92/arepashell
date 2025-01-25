@@ -12,6 +12,8 @@
 
 #include "./includes/minishell.h"
 
+int	g_signal_data = 0;
+
 void	free_token(void	*data)
 {
 	t_token	*token;

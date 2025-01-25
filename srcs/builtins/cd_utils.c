@@ -55,7 +55,6 @@ int	get_directory(const char *path, char **parts, int idx)
 		}
 		entry = readdir(dir);
 	}
-	printf("cd: %s: No such file or directory\n", parts[idx]);
 	return (closedir(dir), 0);
 }
 
@@ -73,5 +72,5 @@ void	go_folder(t_token *token)
 		return ;
 	}
 	if (!get_directory(cwd, parts, 0))
-		printf("cd: %s: No such file or directory\n", token->args[1]);
+		printf("cd: %s: No such file or patata\n", token->args[1]);
 }

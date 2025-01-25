@@ -168,6 +168,8 @@ int		built_in_export(t_shell *shell, t_token	*token);
 
 char	*generate_prompt(void);
 void	go_home(t_shell *shell);
+int		is_valid_n_flag(const char *arg);
+int		do_exit(t_token *token);
 void	go_folder(t_token *token);
 void	free_env(t_shell	*shell);
 void	set_sig_handler(void (handler)(int signum), int sigquit_status);

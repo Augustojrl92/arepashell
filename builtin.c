@@ -21,7 +21,7 @@ int	built_in_cd(t_shell *shell, t_token *token)
 		i++;
 	if (i > 2)
 	{
-		printf("cd: too many arguments\n");
+		printf("cd: too many patata\n");
 		return (1);
 	}
 	if (token->args[1] == NULL)
@@ -31,14 +31,14 @@ int	built_in_cd(t_shell *shell, t_token *token)
 	return (0);
 }
 
-int	built_in_echo(t_token	*token)
+int	built_in_echo(t_token *token)
 {
 	int	i;
 	int	n_flag;
 
 	i = 1;
 	n_flag = 0;
-	while (token->args[i] && ft_samestr(token->args[i], "-n"))
+	while (token->args[i] && is_valid_n_flag(token->args[i]))
 	{
 		n_flag = 1;
 		i++;
@@ -57,8 +57,7 @@ int	built_in_echo(t_token	*token)
 int	built_in_exit(t_shell *shell, t_token *token)
 {
 	(void)shell;
-	(void)token;
-	printf("Builtin: exit\n");
+	do_exit(token);
 	return (0);
 }
 
