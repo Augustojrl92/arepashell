@@ -12,20 +12,30 @@
 
 #include "../../includes/minishell.h"
 
-void get_env(t_shell *shell, t_token *token)
+void do_unset(t_shell *shell, t_token *token)
 {
-    t_list  *current = shell->enviroment;
+    t_list  *current;
+    t_list  *prev;
     t_var   *var;
 
+	current = shell->enviroment;
+	prev = NULL;
     while (current)
     {
         var = (t_var *)current->content;
         if (var && var->name && strcmp(var->name, token->args[1]) == 0)
         {
-            printf("%s=%s\n", var->name, var->value);
-            free(token->args[1]);
+            free(var->name);
+            free(var->value);
+            free(var);
+            if (prev)
+                prev->next = current->next;
+            else 
+                shell->enviroment = current->next;
+            free(current);
             return ;
         }
+        prev = current;
         current = current->next;
     }
 }

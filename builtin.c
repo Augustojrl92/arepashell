@@ -75,8 +75,9 @@ int	built_in_pwd(t_shell *shell)
 int	built_in_unset(t_shell *shell, t_token *token)
 {
 	(void)shell;
-	(void)token;
-	get_env(shell, token);
-	printf("Builtin: unset\n");
+	if (token->args[1] == NULL)
+		printf("unset: not enough arguments\n");
+	else
+		do_unset(shell, token);
 	return (0);
 }
