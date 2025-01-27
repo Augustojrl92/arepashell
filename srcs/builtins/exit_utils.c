@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: layala-s <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 12:24:02 by layala-s          #+#    #+#             */
+/*   Updated: 2025/01/27 12:24:03 by layala-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/minishell.h"
 
 void	free_shell(t_shell *shell)
@@ -7,7 +19,9 @@ void	free_shell(t_shell *shell)
 
 int	is_numeric(const char *str)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	if (!str || str[0] == '\0')
 		return (0);
 	if (str[0] == '-' || str[0] == '+')

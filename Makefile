@@ -24,6 +24,7 @@ SRCS = main.c \
 	./srcs/parsing/tokenizer/tk_actions.c \
 	./srcs/parsing/tokenizer/tokenizer.c \
 	./srcs/builtins/cd_utils.c \
+	./srcs/builtins/unset_utils.c \
 	./srcs/builtins/echo_utils.c \
 	./srcs/builtins/exit_utils.c \
 	actions_utils.c \

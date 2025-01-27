@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   echo_utils.c                                       :+:      :+:    :+:   */
+/*   unset_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: layala-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/27 12:23:09 by layala-s          #+#    #+#             */
-/*   Updated: 2025/01/27 12:23:10 by layala-s         ###   ########.fr       */
+/*   Created: 2025/01/27 12:26:49 by layala-s          #+#    #+#             */
+/*   Updated: 2025/01/27 12:26:50 by layala-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	is_valid_n_flag(const char *arg)
+void get_env(t_shell *shell, t_token *token)
 {
-	int	i;
+    t_list  *current = shell->enviroment;
+    t_var   *var;
 
-	if (arg[0] != '-')
-		return (0);
-	i = 1;
-	while (arg[i])
-	{
-		if (arg[i] != 'n')
-			return (0);
-		i++;
-	}
-	return (1);
+    while (current)
+    {
+        var = (t_var *)current->content;
+        if (var && var->name && strcmp(var->name, token->args[1]) == 0)
+        {
+            printf("%s=%s\n", var->name, var->value);
+            free(token->args[1]);
+            return ;
+        }
+        current = current->next;
+    }
 }

@@ -76,6 +76,7 @@ int	built_in_unset(t_shell *shell, t_token *token)
 {
 	(void)shell;
 	(void)token;
+	get_env(shell, token);
 	printf("Builtin: unset\n");
 	return (0);
 }

@@ -72,5 +72,5 @@ void	go_folder(t_token *token)
 		return ;
 	}
 	if (!get_directory(cwd, parts, 0))
-		printf("cd: %s: No such file or patata\n", token->args[1]);
+		printf("cd: %s: No such file or directory\n", token->args[1]);
 }
