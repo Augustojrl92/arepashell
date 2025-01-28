@@ -2,7 +2,7 @@
 NAME = minishell
 
 # Compilador y flags
-CC = gcc
+CC = @gcc
 CFLAGS = -fsanitize=leak -Wall -Wextra -Werror -g3 -Iincludes
 
 # Comando para eliminar
