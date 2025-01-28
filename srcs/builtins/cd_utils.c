@@ -30,32 +30,47 @@ void	go_home(t_shell *shell)
 	}
 }
 
-int	get_directory(const char *path, char **parts, int idx)
+char *find_subdirectory(DIR *dir, const char *path, const char *subdir_name)
 {
-	struct dirent	*entry;
-	char			*folder;
-	DIR				*dir;
-	int				result;
+    struct dirent *entry;
+    char *full_path = NULL;
 
-	dir = opendir(path);
-	path = ft_strjoin(path, "/");
-	entry = readdir(dir);
-	while (entry != NULL)
-	{
-		if (entry->d_type == DT_DIR && strcmp(entry->d_name, parts[idx]) == 0)
-		{
-			folder = ft_strjoin(path, entry->d_name);
-			if (parts[idx + 1] == NULL)
-			{
-				chdir(folder);
-				return (closedir(dir), free(folder), free((void *)path), 1);
-			}
-			result = get_directory(folder, parts, idx + 1);
-			return (closedir(dir), result);
-		}
-		entry = readdir(dir);
-	}
-	return (closedir(dir), free((void *)path), 0);
+    while ((entry = readdir(dir)) != NULL)
+    {
+        if (entry->d_type == DT_DIR && strcmp(entry->d_name, subdir_name) == 0)
+        {
+            full_path = ft_strjoin(path, entry->d_name);
+            break;
+        }
+    }
+    return (full_path);
+}
+
+int get_directory(char *path, char **parts, int idx)
+{
+    DIR *dir;
+    char *temp_path;
+    char *folder;
+    int result;
+
+    dir = opendir(path);
+    if (!dir)
+        return (0);
+    temp_path = ft_strjoin(path, "/");
+    if (!temp_path)
+        return (closedir(dir), 0);
+    folder = find_subdirectory(dir, temp_path, parts[idx]);
+    if (folder)
+    {
+        if (parts[idx + 1] == NULL)
+        {
+            chdir(folder);
+            return (free(folder), free(temp_path), closedir(dir), 1);
+        }
+        result = get_directory(folder, parts, idx + 1);
+        return (free(folder), free(temp_path), closedir(dir), result);
+    }
+    return (free(temp_path), closedir(dir), (0));
 }
 
 void	go_folder(t_token *token)
