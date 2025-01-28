@@ -27,6 +27,8 @@ void	wait_childs(t_token *token, int twice)
 	wait(&token->shell->exit_status);
 	if (WIFEXITED(token->shell->exit_status))
 		token->shell->exit_status = WEXITSTATUS(token->shell->exit_status);
+	else if (WIFSIGNALED(token->shell->exit_status))
+		token->shell->exit_status = 128 + WTERMSIG(token->shell->exit_status);
 	if (token->shell->child)
 		exit(token->shell->exit_status);
 }

@@ -70,6 +70,7 @@ int	main(int ac, char **av, char **envp)
 
 	(void)ac;
 	(void)av;
+	do_signal();
 	ft_bzero(&shell, sizeof(t_shell));
 	import_env(&shell, envp);
 	main_loop(&shell);

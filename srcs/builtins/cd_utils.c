@@ -48,14 +48,14 @@ int	get_directory(const char *path, char **parts, int idx)
 			if (parts[idx + 1] == NULL)
 			{
 				chdir(folder);
-				return (closedir(dir), 1);
+				return (closedir(dir), free(folder), free((void *)path), 1);
 			}
 			result = get_directory(folder, parts, idx + 1);
 			return (closedir(dir), result);
 		}
 		entry = readdir(dir);
 	}
-	return (closedir(dir), 0);
+	return (closedir(dir), free((void *)path), 0);
 }
 
 void	go_folder(t_token *token)
@@ -63,7 +63,9 @@ void	go_folder(t_token *token)
 	char	buff[PATH_MAX + 1];
 	char	*cwd;
 	char	**parts;
+	int		i;
 
+	i = 0;
 	cwd = getcwd(buff, PATH_MAX + 1);
 	parts = ft_split(token->args[1], '/');
 	if (parts == NULL || parts[0] == NULL)
@@ -73,4 +75,7 @@ void	go_folder(t_token *token)
 	}
 	if (!get_directory(cwd, parts, 0))
 		printf("cd: %s: No such file or directory\n", token->args[1]);
+	while (parts[i])
+		free(parts[i++]);
+	free(parts);
 }

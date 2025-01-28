@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "../includes/minishell.h"
 
 void	unlink_heredocs(void	*token_ptr, void	*shell_ptr)
 {

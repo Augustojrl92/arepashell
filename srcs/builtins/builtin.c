@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "../../includes/minishell.h"
 
 int	built_in_cd(t_shell *shell, t_token *token)
 {
@@ -21,7 +21,7 @@ int	built_in_cd(t_shell *shell, t_token *token)
 		i++;
 	if (i > 2)
 	{
-		printf("cd: too many patata\n");
+		printf("cd: too many arguments\n");
 		return (1);
 	}
 	if (token->args[1] == NULL)

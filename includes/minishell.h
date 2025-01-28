@@ -75,7 +75,7 @@ typedef enum e_pipe_fd
 # endif
 
 # ifndef MSG_BYE
-#  define MSG_BYE "Bye!\n"
+#  define MSG_BYE "exit\n"
 # endif
 
 //-----------------------------DEFINING STRUCTURES----------------------------//
@@ -168,6 +168,7 @@ int		built_in_export(t_shell *shell, t_token	*token);
 
 char	*generate_prompt(void);
 void	go_home(t_shell *shell);
+void	do_signal(void);
 int		is_valid_n_flag(const char *arg);
 int		do_exit(t_token *token);
 void	go_folder(t_token *token);

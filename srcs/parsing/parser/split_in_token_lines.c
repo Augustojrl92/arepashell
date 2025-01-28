@@ -43,7 +43,7 @@ int	split_in_token_lines(t_shell	*shell)
 		return (free_alph_err(&shell->splitter), 1);
 	else
 	{
-		printf("%s\n", shell->splitter.errors[a_state]);
+		printf("%s", shell->splitter.errors[a_state]);
 		return (free_alph_err(&shell->splitter), 0);
 	}
 }

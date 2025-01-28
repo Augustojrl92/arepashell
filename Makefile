@@ -25,22 +25,23 @@ SRCS = main.c \
 	./srcs/parsing/tokenizer/tokenizer.c \
 	./srcs/builtins/cd_utils.c \
 	./srcs/builtins/unset_utils.c \
+	./srcs/builtins/export.c \
 	./srcs/builtins/echo_utils.c \
 	./srcs/builtins/exit_utils.c \
-	actions_utils.c \
-	import_env.c \
-	search_utils.c \
+	./srcs/builtins/builtin.c \
 	./srcs/executors/exe_builtins.c \
 	./srcs/executors/exe_cmd.c \
 	./srcs/executors/exe_tokens.c \
 	./srcs/executors/exe_utils.c \
-	builtin.c \
-	stdin_redir.c \
-	env.c \
+	./srcs/actions_utils.c \
+	./srcs/search_utils.c \
+	./srcs/stdin_redir.c \
+	./srcs/signals.c \
+	./srcs/env/import_env.c \
+	./srcs/env/env.c \
 	./srcs/expansors/expander.c \
 	./srcs/expansors/exp_actions.c \
 	./srcs/expansors/exp_init.c \
-	export.c \
 
 # Archivos objeto (ubicados en obj/)
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))
