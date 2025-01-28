@@ -2,7 +2,7 @@
 NAME = minishell
 
 # Compilador y flags
-CC = @gcc
+CC = gcc
 CFLAGS = -fsanitize=leak -Wall -Wextra -Werror -g3 -Iincludes
 
 # Comando para eliminar
@@ -52,9 +52,9 @@ DEF_COLOR = \033[0;49m
 
 # Regla para compilar el programa
 $(NAME): $(LIBFT) $(OBJ)
-	@echo "$(CYAN) ☕ Building Minishell... ☕ $(DEF_COLOR)"
+	@echo "$(CYAN) 🫓 Cocinando la arepa... 🫓 $(DEF_COLOR)"
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME) -lreadline
-	@echo "$(CYAN) ✨ Build complete! ✨ $(DEF_COLOR)"
+	@echo "$(CYAN) 🫓 Arepa hecha! 🫓 $(DEF_COLOR)"
 
 # Regla para compilar archivos fuente en objetos
 $(OBJ_DIR)%.o: %.c
@@ -64,7 +64,6 @@ $(OBJ_DIR)%.o: %.c
 
 # Regla para compilar libft
 $(LIBFT):
-	@echo "$(CYAN) 🛠️  Compiling libft... 🛠️ $(DEF_COLOR)"
 	@$(MAKE) -C $(LIBFT_DIR)
 
 # Regla para compilar todo
@@ -72,13 +71,13 @@ all: $(NAME)
 
 # Limpiar archivos compilados
 clean:
-	@echo "$(CYAN) 🍩 Cleaning object files... 🍩 $(DEF_COLOR)"
+	@echo "$(CYAN) 🫓 Cleaning object files... 🫓 $(DEF_COLOR)"
 	$(RM) $(OBJ_DIR)
 	@$(MAKE) -C $(LIBFT_DIR) clean
 
 # Limpiar todo
 fclean: clean
-	@echo "$(CYAN) ✨ Removing executable and libft... ✨ $(DEF_COLOR)"
+	@echo "$(CYAN) 🫓 Removing executable and libft... 🫓 $(DEF_COLOR)"
 	$(RM) $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 
