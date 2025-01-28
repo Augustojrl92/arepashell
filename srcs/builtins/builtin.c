@@ -14,8 +14,11 @@
 
 int	built_in_cd(t_shell *shell, t_token *token)
 {
-	int	i;
+	char	buff[PATH_MAX + 1];
+	char	*cwd;
+	int		i;
 
+	cwd = getcwd(buff, PATH_MAX + 1);
 	i = 0;
 	while (token->args[i])
 		i++;
@@ -26,6 +29,8 @@ int	built_in_cd(t_shell *shell, t_token *token)
 	}
 	if (token->args[1] == NULL)
 		go_home(shell);
+	else if (token->args[1][0] == '-' && token->args[1][1] == '\0')
+		printf("%s\n", cwd);
 	else
 		go_folder(token);
 	return (0);
