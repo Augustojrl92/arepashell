@@ -42,6 +42,7 @@ SRCS = main.c \
 	./srcs/expansors/expander.c \
 	./srcs/expansors/exp_actions.c \
 	./srcs/expansors/exp_init.c \
+	wildcard.c \
 
 # Archivos objeto (ubicados en obj/)
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRCS))
