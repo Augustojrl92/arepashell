@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:41:30 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/02/09 20:23:06 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:57:19 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,9 @@ typedef enum e_ex_states
 	EX_DOLLAR_OUT,
 	EX_DOLLAR_IN,
 	EX_NAME_OUT,
-	EX_NAME_IN
+	EX_NAME_IN,
+	EX_QMARK_OUT,
+	EX_QMARK_IN
 }	t_ex_states;
 
 typedef enum e_tk_states

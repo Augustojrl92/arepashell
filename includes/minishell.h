@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:48:49 by layala-s          #+#    #+#             */
-/*   Updated: 2025/02/09 20:23:36 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:12:42 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,9 +174,8 @@ int		do_exit(t_token *token);
 void	go_folder(t_token *token);
 void	do_unset(t_shell *shell, t_token *token);
 void	free_env(t_shell	*shell);
-void	set_sig_handler(void (handler)(int signum), int sigquit_status);
-void	standard_handler(int signum);
 void	heredoc_handler(int signum);
+
 
 void expand_wildcards_in_args(t_token *token);
 void expand_wildcards_in_outfiles(t_token *token);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 20:24:15 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/12/22 03:58:37 by jlara-na         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:40:02 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,15 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 int	ft_samestr(const char *s1, const char *s2)
 {
-	size_t				i;
-	size_t				len1;
-	size_t				len2;
+	size_t	i;
+	size_t	len1;
+	size_t	len2;
 
 	i = 0;
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
+	if (len2 == 0)
+		return (1);
 	if (len1 != len2)
 		return (0);
 	while (s1[i])

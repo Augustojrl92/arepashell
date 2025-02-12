@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exe_actions.c                                      :+:      :+:    :+:   */
+/*   exp_actions.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:09:05 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/22 10:32:28 by layala-s         ###   ########.fr       */
+/*   Updated: 2025/02/12 14:58:52 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,22 @@
 
 char	*get_next_var(t_automata	*a)
 {
-	char	*next_var;
 	int		i;
 	int		j;
 
 	i = a->i + 1;
 	j = 0;
-	while (a->str[i] != '\0' && a->str[i] != ' ' && a->str[i] != '\t'
-		&& a->str[i] != '\n' && a->str[i] != '$' && a->str[i] != '\''
-		&& a->str[i] != '\"')
+	if (a->str[i] == '?')
+		return (ft_strdup("?"));
+	if (!ft_isalpha(a->str[i]) && a->str[i] != '_' && a->str[i] != '?')
+		return (ft_strdup("$"));
+	while (a->str[i] != '\0' && ft_strchr(" \t\n.:;@-+=#/(){}[]\"\'^*\\?$",
+			a->str[i]) == NULL)
 	{
 		i++;
 		j++;
 	}
-	next_var = ft_substr(a->str, a->i + 1, j);
-	return (next_var);
+	return (ft_substr(a->str, a->i + 1, j));
 }
 
 void	insert_var(t_automata *a, void *data)
@@ -41,9 +42,17 @@ void	insert_var(t_automata *a, void *data)
 	token = (t_token *)data;
 	pointer = (char **)token->data;
 	var = get_next_var(a);
-	str = find_value(token->shell->enviroment, var);
+	if (ft_samestr(var, "$"))
+		str = ft_strdup("$");
+	else
+		str = find_value(token->shell->enviroment, var);
 	if (str == NULL && ft_samestr("?", var))
-		str = ft_itoa(token->shell->exit_status);
+	{
+		if (g_signal_data != SIGINT)
+			str = ft_itoa(token->shell->exit_status);
+		else
+			str = ft_itoa(130);
+	}
 	free(var);
 	*pointer = ft_strjoinfree(*pointer, str, 2);
 }
