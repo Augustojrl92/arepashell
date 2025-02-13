@@ -83,6 +83,7 @@ void	listen_and_write(t_token *token, char	*str, int fd)
 			expand_line(token, token->shell, &line);
 			ft_putstr_fd(line, fd);
 		}
+		
 		ft_putchar_fd('\n', fd);
 		free(line);
 	}

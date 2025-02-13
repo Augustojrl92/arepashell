@@ -93,6 +93,7 @@ typedef struct s_shell
 	char		*readline;
 	char		**default_env;
 	char		**path_var;
+	char		*last_path;
 }	t_shell;
 
 typedef struct s_token
@@ -171,10 +172,12 @@ void	go_home(t_shell *shell);
 void	do_signal(void);
 int		is_valid_n_flag(const char *arg);
 int		do_exit(t_token *token);
-void	go_folder(t_token *token);
+void	go_folder(t_token *token, t_shell *shell);
 void	do_unset(t_shell *shell, t_token *token);
 void	free_env(t_shell	*shell);
 void	heredoc_handler(int signum);
+int		check_dir(t_shell *shell);
+void 	check_and_restore_directory(t_shell *shell);
 
 
 void expand_wildcards_in_args(t_token *token);

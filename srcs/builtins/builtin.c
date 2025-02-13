@@ -20,19 +20,21 @@ int	built_in_cd(t_shell *shell, t_token *token)
 
 	cwd = getcwd(buff, PATH_MAX + 1);
 	i = 0;
+    if (!cwd)
+	{
+		check_dir(shell);
+		cwd = getcwd(buff, PATH_MAX + 1);
+	}
 	while (token->args[i])
 		i++;
 	if (i > 2)
-	{
-		printf("cd: too many arguments\n");
-		return (1);
-	}
+		return (printf("cd: too many arguments\n"), 1);
 	if (token->args[1] == NULL)
 		go_home(shell);
 	else if (token->args[1][0] == '-' && token->args[1][1] == '\0')
-		printf("%s\n", cwd);
+		chdir(shell->last_path);
 	else
-		go_folder(token);
+		go_folder(token, shell);
 	return (0);
 }
 

@@ -28,13 +28,14 @@ int	split_in_token_lines(t_shell	*shell)
 	int		a_state;
 	char	*input;
 
-	input = readline("\033[1;33;43marepashell>\033[0;0m ");
+	input = readline("\001\033[1;33m\002arepashell->\001\033[0;0m\002 ");
 	if (input == NULL)
 	{
 		printf(MSG_BYE);
 		exit(EXIT_SUCCESS);
 	}
-	add_history(input);
+	if (ft_strncmp(input, "\n", ft_strlen(input)))
+		add_history(input);
 	splitter_automata_init(&shell->splitter, shell);
 	shell->splitter.str = input;
 	a_state = evaluate(&shell->splitter);

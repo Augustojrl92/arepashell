@@ -30,7 +30,6 @@ void	do_signal(void)
 	signal(SIGQUIT, SIG_IGN);
 }
 
-
 void	heredoc_handler(int signum)
 {
 	(void)signum;

@@ -73,7 +73,6 @@ int	main(int ac, char **av, char **envp)
 	do_signal();
 	ft_bzero(&shell, sizeof(t_shell));
 	import_env(&shell, envp);
-	go_home(&shell);
 	main_loop(&shell);
 	return (EXIT_SUCCESS);
 }
