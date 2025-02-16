@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 01:30:00 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/22 10:29:22 by layala-s         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:36:13 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	built_in_cd(t_shell *shell, t_token *token)
 
 	cwd = getcwd(buff, PATH_MAX + 1);
 	i = 0;
-    if (!cwd)
+	if (!cwd)
 	{
 		check_dir(shell);
 		cwd = getcwd(buff, PATH_MAX + 1);

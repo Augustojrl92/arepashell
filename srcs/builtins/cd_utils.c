@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: layala-s <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/24 11:48:57 by layala-s          #+#    #+#             */
-/*   Updated: 2025/01/24 12:01:48 by layala-s         ###   ########.fr       */
+/*   Updated: 2025/02/16 21:12:06 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,48 +30,51 @@ void	go_home(t_shell *shell)
 	}
 }
 
-char *find_subdirectory(DIR *dir, const char *path, const char *subdir_name)
+char	*find_subdirectory(DIR *dir, const char *path, const char *subdir_name)
 {
-    struct dirent *entry;
-    char *full_path = NULL;
+	struct dirent	*entry;
+	char			*full_path;
 
-    while ((entry = readdir(dir)) != NULL)
-    {
-        if (entry->d_type == DT_DIR && strcmp(entry->d_name, subdir_name) == 0)
-        {
-            full_path = ft_strjoin(path, entry->d_name);
-            break;
-        }
-    }
-    return (full_path);
+	full_path = NULL;
+	//entry =readdir(dir)
+	while ((entry = readdir(dir)) != NULL)//while (entry!= NULL)
+	{
+		if (entry->d_type == DT_DIR && strcmp(entry->d_name, subdir_name) == 0)
+		{
+			full_path = ft_strjoin(path, entry->d_name);
+			break ;
+		}
+		//entry =readdir(dir)
+	}
+	return (full_path);
 }
 
-int get_directory(char *path, char **parts, int idx)
+int	get_directory(char *path, char **parts, int idx)
 {
-    DIR *dir;
-    char *temp_path;
-    char *folder;
-    int result;
+	DIR		*dir;
+	char	*temp_path;
+	char	*folder;
+	int		result;
 
-    dir = opendir(path);
-    if (!dir)
-        return (0);
-    if (path)
-        temp_path = ft_strjoin(path, "/");
-    if (!temp_path)
-        return (closedir(dir), 0);
-    folder = find_subdirectory(dir, temp_path, parts[idx]);
-    if (folder)
-    {
-        if (parts[idx + 1] == NULL)
-        {
-            chdir(folder);
-            return (free(folder), free(temp_path), closedir(dir), 1);
-        }
-        result = get_directory(folder, parts, idx + 1);
-        return (free(folder), free(temp_path), closedir(dir), result);
-    }
-    return (free(temp_path), closedir(dir), (0));
+	dir = opendir(path);
+	if (!dir)
+		return (0);
+	if (path)
+		temp_path = ft_strjoin(path, "/");
+	if (!temp_path)
+		return (closedir(dir), 0);
+	folder = find_subdirectory(dir, temp_path, parts[idx]);
+	if (folder)
+	{
+		if (parts[idx + 1] == NULL)
+		{
+			chdir(folder);
+			return (free(folder), free(temp_path), closedir(dir), 1);
+		}
+		result = get_directory(folder, parts, idx + 1);
+		return (free(folder), free(temp_path), closedir(dir), result);
+	}
+	return (free(temp_path), closedir(dir), (0));
 }
 
 void	go_folder(t_token *token, t_shell *shell)
@@ -87,9 +90,9 @@ void	go_folder(t_token *token, t_shell *shell)
 	if (parts == NULL || parts[0] == NULL)
 	{
 		printf("cd: invalid path\n");
-	    while (parts[i])
-		    free(parts[i++]);
-	    free(parts);
+		while (parts[i])
+			free(parts[i++]);
+		free(parts);
 		return ;
 	}
 	if (!get_directory(cwd, parts, 0))
@@ -97,21 +100,21 @@ void	go_folder(t_token *token, t_shell *shell)
 	while (parts[i])
 		free(parts[i++]);
 	free(parts);
-    shell->last_path = cwd;
+	shell->last_path = cwd;
 }
 
-int check_dir(t_shell *shell)
+int	check_dir(t_shell *shell)
 {
-    perror("cd: getcwd failed");
-    if (shell->last_path)  
-    {
-        printf("cd: Current directory is missing, returning to last valid directory: %s\n", shell->last_path);
-        chdir(shell->last_path);
-    }
-    else
-    {
-        printf("cd: No last known directory, returning to HOME\n");
-        go_home(shell);
-    }
-    return (1);
+	perror("cd: getcwd failed");
+	if (shell->last_path)
+	{
+		printf("cd: Current directory is missing, returning to last valid directory: %s\n", shell->last_path);
+		chdir(shell->last_path);
+	}
+	else
+	{
+		printf("cd: No last known directory, returning to HOME\n");
+		go_home(shell);
+	}
+	return (1);
 }

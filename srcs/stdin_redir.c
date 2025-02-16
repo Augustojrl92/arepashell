@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 18:33:43 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/22 10:52:22 by layala-s         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:34:56 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	listen_and_write(t_token *token, char	*str, int fd)
 			expand_line(token, token->shell, &line);
 			ft_putstr_fd(line, fd);
 		}
-		
 		ft_putchar_fd('\n', fd);
 		free(line);
 	}

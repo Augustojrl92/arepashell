@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:08:57 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/02/12 15:24:27 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:37:54 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,3 @@ void	expander_tactions_init(t_automata *a)
 	a->fta[EX_QMARK_OUT][EX_LOOKING] = insert_chr;
 	a->fta[EX_QMARK_IN][EX_LOOKING] = insert_chr;
 }
-
-

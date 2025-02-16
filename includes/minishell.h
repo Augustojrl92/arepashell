@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:48:49 by layala-s          #+#    #+#             */
-/*   Updated: 2025/02/12 15:12:42 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/16 20:18:58 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,14 +177,15 @@ void	do_unset(t_shell *shell, t_token *token);
 void	free_env(t_shell	*shell);
 void	heredoc_handler(int signum);
 int		check_dir(t_shell *shell);
-void 	check_and_restore_directory(t_shell *shell);
+void	check_and_restore_directory(t_shell *shell);
 
+void	expand_wildcards_in_args(t_token *token);
+void	expand_wildcards_in_outfiles(t_token *token);
+void	expand_wildcards_in_infiles(t_token *token);
+char	**expand_wildcard_pattern(const char *pattern);
 
-void expand_wildcards_in_args(t_token *token);
-void expand_wildcards_in_outfiles(t_token *token);
-void expand_wildcards_in_infiles(t_token *token);
-char **expand_wildcard_pattern(const char *pattern);
-
+char	**ft_insert_sarray(char **arr, char **insert, int index);
+int		ft_strcmp(const char *s1, const char *s2);
 //----------------------------------ERROR MSG---------------------------------//
 
 # define ERROR_EXIT 	"EXIT\n"
