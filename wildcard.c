@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 14:00:00 by yourname          #+#    #+#             */
-/*   Updated: 2025/01/28 23:11:21 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/12 23:47:36 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,11 @@ char **ft_remove_index_sarray(char **arr, int index)
 
 char **ft_insert_sarray(char **arr, char **insert, int index)
 {
-    int len_arr = 0;
-    int len_ins = 0;
+    int len_arr;
+    int len_ins;
+
+    len_arr = 0;
+    len_ins = 0;
     char **new_arr;
     int i, j;
 
@@ -64,7 +67,8 @@ char **ft_insert_sarray(char **arr, char **insert, int index)
         index = len_arr;
     new_arr = malloc(sizeof(char *) * (len_arr + len_ins + 1));
     if (!new_arr)
-        return (arr); // si falla, devolvemos el viejo
+        return (arr);
+    
     i = 0;
     while (i < index)
     {
@@ -125,8 +129,9 @@ char **expand_wildcard_pattern(const char *pattern)
 {
     DIR           *dir;
     struct dirent *entry;
-    char         **matches = NULL;
+    char         **matches;
     
+    matches = NULL;
     dir = opendir(".");
     if (!dir)
         return (NULL);
@@ -146,11 +151,11 @@ char **expand_wildcard_pattern(const char *pattern)
 
 void expand_wildcards_in_args(t_token *token)
 {
-    int i = 0;
+    int i;
 
+    i = 0;
     if (!token->args)
         return;
-
     while (token->args[i])
     {
         if (!ft_strchr(token->args[i], '*'))
@@ -173,8 +178,9 @@ void expand_wildcards_in_args(t_token *token)
 
 void expand_wildcards_in_outfiles(t_token *token)
 {
-    int i = 0;
+    int i;
 
+    i = 0;
     if (!token->outfiles)
         return;
 

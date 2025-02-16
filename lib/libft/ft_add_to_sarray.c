@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_add_to_sarray.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 21:12:06 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/12/27 23:05:43 by jlara-na         ###   ########.fr       */
+/*   Created: 2025/02/16 16:05:22 by aurodrig          #+#    #+#             */
+/*   Updated: 2025/02/16 16:05:23 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "libft.h"
 

@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free_sarray.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jlara-na <jlara-na@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/15 22:45:59 by jlara-na          #+#    #+#             */
-/*   Updated: 2024/07/15 22:50:55 by jlara-na         ###   ########.fr       */
+/*   Created: 2025/02/16 16:09:02 by aurodrig          #+#    #+#             */
+/*   Updated: 2025/02/16 16:09:03 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+
 
 #include "libft.h"
 
