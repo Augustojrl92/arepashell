@@ -18,6 +18,7 @@ int	built_in_cd(t_shell *shell, t_token *token)
 	char	*cwd;
 	int		i;
 
+	check_and_restore_directory(shell);
 	cwd = getcwd(buff, PATH_MAX + 1);
 	i = 0;
 	if (!cwd)
@@ -73,8 +74,13 @@ int	built_in_pwd(t_shell *shell)
 	char	buff[PATH_MAX + 1];
 	char	*cwd;
 
-	(void)shell;
+	check_and_restore_directory(shell);
 	cwd = getcwd(buff, PATH_MAX + 1);
+	if (!cwd)
+	{
+		check_dir(shell);
+		cwd = getcwd(buff, PATH_MAX + 1);
+	}
 	printf("%s\n", cwd);
 	return (0);
 }

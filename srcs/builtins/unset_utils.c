@@ -23,7 +23,7 @@ void	do_unset(t_shell *shell, t_token *token)
 	while (current)
 	{
 		var = (t_var *)current->content;
-		if (var && var->name && strcmp(var->name, token->args[1]) == 0)
+		if (var && var->name && ft_strcmp(var->name, token->args[1]) == 0)
 		{
 			free(var->name);
 			free(var->value);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "../../includes/minishell.h"
 
 static int	check_prefix(const char *filename, const char *prefix)
 {

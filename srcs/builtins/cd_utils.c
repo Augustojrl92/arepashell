@@ -21,7 +21,7 @@ void	go_home(t_shell *shell)
 	while (current)
 	{
 		var = (t_var *)current->content;
-		if (var && var->name && strcmp(var->name, "HOME") == 0)
+		if (var && var->name && ft_strcmp(var->name, "HOME") == 0)
 		{
 			chdir(var->value);
 			return ;
@@ -36,15 +36,16 @@ char	*find_subdirectory(DIR *dir, const char *path, const char *subdir_name)
 	char			*full_path;
 
 	full_path = NULL;
-	//entry =readdir(dir)
-	while ((entry = readdir(dir)) != NULL)//while (entry!= NULL)
+	entry = readdir(dir);
+	while (entry != NULL)
 	{
-		if (entry->d_type == DT_DIR && strcmp(entry->d_name, subdir_name) == 0)
+		if (entry->d_type == DT_DIR && \
+		ft_strcmp(entry->d_name, subdir_name) == 0)
 		{
 			full_path = ft_strjoin(path, entry->d_name);
 			break ;
 		}
-		//entry =readdir(dir)
+		entry = readdir(dir);
 	}
 	return (full_path);
 }
@@ -107,14 +108,8 @@ int	check_dir(t_shell *shell)
 {
 	perror("cd: getcwd failed");
 	if (shell->last_path)
-	{
-		printf("cd: Current directory is missing, returning to last valid directory: %s\n", shell->last_path);
 		chdir(shell->last_path);
-	}
 	else
-	{
-		printf("cd: No last known directory, returning to HOME\n");
 		go_home(shell);
-	}
 	return (1);
 }

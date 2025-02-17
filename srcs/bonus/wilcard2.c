@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/minishell.h"
+#include "../../includes/minishell.h"
 
 static int	adjust_index(int index, int len_arr)
 {
