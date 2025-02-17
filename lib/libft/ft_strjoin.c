@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 13:08:49 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/02/16 16:16:44 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:00:46 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = 0;
 	while (s2[j])
 	{
-		str[i] = s2[j];
-		i++;
-		j++;
+		str[i++] = s2[j++];
 	}
+	str[i] = '\0';
 	return (str);
 }
 

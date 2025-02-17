@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:08:10 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/22 10:46:17 by layala-s         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:58:50 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	main_loop(t_shell	*shell)
 		if (split_in_token_lines(shell))
 		{
 			ft_tree_in_order_arg(shell->token_tree, tokenize_node, shell);
-			// ft_tree_in_order_arg(shell->token_tree, expand_token, shell); <------ AQUI ESTÁ
+			ft_tree_in_order_arg(shell->token_tree, expand_token, shell);
 			if (shell->token_tree)
 				exe_minishell_recursive(shell->token_tree);
 			ft_tree_in_order_arg(shell->token_tree, unlink_heredocs, shell);

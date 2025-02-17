@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:07:42 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/08 21:08:55 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:59:25 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,9 @@ void	exe_minishell_recursive(t_tree	*node)
 	int		pid;
 	int		fd[2];
 
-	// printf("TOKEN ANTES ===> %s\n", node->data);
 	if (!node)
 		exit(EXIT_SUCCESS);
 	token = (t_token *)node->data;
-	printf("TOKEN ===> %s\n", token->cmd);
 	pid = 0;
 	if (ft_samestr(token->line, PIPE_LINE))
 	{
