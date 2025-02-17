@@ -38,6 +38,8 @@ int	exe_built_in(void	*data, void	*context)
 
 	token = (t_token *)data;
 	shell = (t_shell *)context;
+	if (!token->cmd || token->cmd[0] == '\0')
+		return (1);
 	if (ft_samestr(token->cmd, CD_BUILT))
 		return (shell->exit_status = built_in_cd(shell, token));
 	if (ft_samestr(token->cmd, ECHO_BUILT))

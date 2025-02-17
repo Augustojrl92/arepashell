@@ -2,8 +2,8 @@
 NAME = minishell
 
 # Compilador y flags
-CC = gcc
-CFLAGS = -fsanitize=leak -Wall -Wextra -Werror -g3 -Iincludes
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g3 
 
 # Comando para eliminar
 RM = rm -rf

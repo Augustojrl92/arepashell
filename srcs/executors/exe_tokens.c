@@ -59,9 +59,11 @@ void	exe_minishell_recursive(t_tree	*node)
 	int		pid;
 	int		fd[2];
 
+	// printf("TOKEN ANTES ===> %s\n", node->data);
 	if (!node)
 		exit(EXIT_SUCCESS);
 	token = (t_token *)node->data;
+	printf("TOKEN ===> %s\n", token->cmd);
 	pid = 0;
 	if (ft_samestr(token->line, PIPE_LINE))
 	{

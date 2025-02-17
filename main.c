@@ -52,7 +52,7 @@ void	main_loop(t_shell	*shell)
 		if (split_in_token_lines(shell))
 		{
 			ft_tree_in_order_arg(shell->token_tree, tokenize_node, shell);
-			ft_tree_in_order_arg(shell->token_tree, expand_token, shell);
+			// ft_tree_in_order_arg(shell->token_tree, expand_token, shell); <------ AQUI ESTÁ
 			if (shell->token_tree)
 				exe_minishell_recursive(shell->token_tree);
 			ft_tree_in_order_arg(shell->token_tree, unlink_heredocs, shell);

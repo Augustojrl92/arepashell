@@ -53,7 +53,7 @@ char	*find_subdirectory(DIR *dir, const char *path, const char *subdir_name)
 int	get_directory(char *path, char **parts, int idx)
 {
 	DIR		*dir;
-	char	*temp_path;
+	char	*temp_path = NULL;
 	char	*folder;
 	int		result;
 

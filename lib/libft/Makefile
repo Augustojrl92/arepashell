@@ -77,7 +77,7 @@ FILES_O = $(FILES_C:.c=.o)
 
 FILES_O_BONUS = $(FILES_C_BONUS:.c=.o) 
 
-CC = @gcc -Werror -Wextra -Wall
+CC = cc -Werror -Wextra -Wall
 
 all: $(NAME)
 

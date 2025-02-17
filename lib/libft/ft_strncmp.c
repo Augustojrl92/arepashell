@@ -36,6 +36,8 @@ int	ft_samestr(const char *s1, const char *s2)
 	size_t	len1;
 	size_t	len2;
 
+	if (!s1 || !s2)
+		return (0);
 	i = 0;
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
