@@ -6,21 +6,29 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:07:32 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/07 05:07:33 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:44:19 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	set_exit_status(char	*cmd, int error_number)
+int	set_exit_status(char *cmd, int error_number)
 {
-	perror(cmd);
-	if (error_number == EACCES)
-		return (ESCAPE_126);
-	if (error_number == ENOENT)
-		return (ESCAPE_127);
-	return (0);
+    if (error_number == EACCES)
+    {
+        perror(cmd);
+        return (ESCAPE_126);
+    }
+    if (error_number == ENOENT)
+    {
+        perror(cmd);
+        return (ESCAPE_127);
+    }
+    return (0);
 }
+
+
+
 
 void	execute_multiple_paths(t_shell *shell, t_token *token, char **paths)
 {
