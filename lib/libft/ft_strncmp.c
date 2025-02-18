@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 11:23:40 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/02/16 16:17:56 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:07:51 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	ft_samestr(const char *s1, const char *s2)
 	i = 0;
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	if (len2 == 0)
-		return (1);
+	// if (len2 == 0)
+	// 	return (1);
 	if (len1 != len2)
 		return (0);
 	while (s1[i])
