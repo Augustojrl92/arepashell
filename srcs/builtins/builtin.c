@@ -33,7 +33,7 @@ int	built_in_cd(t_shell *shell, t_token *token)
 	if (token->args[1] == NULL)
 		go_home(shell);
 	else if (token->args[1][0] == '-' && token->args[1][1] == '\0')
-		chdir(shell->last_path);
+		return (printf("%s\n", shell->last_path), chdir(shell->last_path), 1);
 	else
 		go_folder(token, shell);
 	return (0);

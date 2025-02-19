@@ -53,10 +53,11 @@ char	*find_subdirectory(DIR *dir, const char *path, const char *subdir_name)
 int	get_directory(char *path, char **parts, int idx)
 {
 	DIR		*dir;
-	char	*temp_path = NULL;
+	char	*temp_path;
 	char	*folder;
 	int		result;
 
+	temp_path = NULL;
 	dir = opendir(path);
 	if (!dir)
 		return (0);
@@ -101,7 +102,8 @@ void	go_folder(t_token *token, t_shell *shell)
 	while (parts[i])
 		free(parts[i++]);
 	free(parts);
-	shell->last_path = cwd;
+	free(shell->last_path);
+	shell->last_path = ft_strdup(cwd);
 }
 
 int	check_dir(t_shell *shell)

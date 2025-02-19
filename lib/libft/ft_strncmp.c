@@ -41,8 +41,6 @@ int	ft_samestr(const char *s1, const char *s2)
 	i = 0;
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	// if (len2 == 0)
-	// 	return (1);
 	if (len1 != len2)
 		return (0);
 	while (s1[i])

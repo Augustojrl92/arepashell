@@ -14,21 +14,18 @@
 
 int	set_exit_status(char *cmd, int error_number)
 {
-    if (error_number == EACCES)
-    {
-        perror(cmd);
-        return (ESCAPE_126);
-    }
-    if (error_number == ENOENT)
-    {
-        perror(cmd);
-        return (ESCAPE_127);
-    }
-    return (0);
+	if (error_number == EACCES)
+	{
+		perror(cmd);
+		return (ESCAPE_126);
+	}
+	if (error_number == ENOENT)
+	{
+		perror(cmd);
+		return (ESCAPE_127);
+	}
+	return (0);
 }
-
-
-
 
 void	execute_multiple_paths(t_shell *shell, t_token *token, char **paths)
 {
@@ -64,11 +61,8 @@ void	exe_path_cmd(t_shell *shell, t_token *token)
 	{
 		if (!access(token->cmd, X_OK))
 		{
-    		if (execve(token->cmd, token->args, shell->default_env) == -1)
-    		{
-        		perror("execve failed");
-        		exit(127);
-    		}
+			if (execve(token->cmd, token->args, shell->default_env) == -1)
+				exit(127);
 		}
 	}
 	ft_free_sarray(paths);
