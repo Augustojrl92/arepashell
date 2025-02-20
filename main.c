@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:08:10 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/02/17 18:58:50 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/20 23:09:23 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,43 @@ void	main_loop(t_shell	*shell)
 			ft_tree_in_order_arg(shell->token_tree, tokenize_node, shell);
 			ft_tree_in_order_arg(shell->token_tree, expand_token, shell);
 			if (shell->token_tree)
+			{
 				exe_minishell_recursive(shell->token_tree);
+				wait_childs(shell->token_tree->data, TRUE);
+			}
 			ft_tree_in_order_arg(shell->token_tree, unlink_heredocs, shell);
 		}
-		ft_free_sarray(shell->default_env);
 		ft_free_sarray(shell->path_var);
 		free_tree(shell, shell->token_tree);
 		free(shell->splitter.str);
 	}
+}
+
+
+int	ft_sarrsize(char **arr)
+{
+	int	size;
+
+	if (!arr)
+		return (0);
+	size = 0;
+	while (arr[size])
+		size++;
+	return (size);
+}
+char	**duparr(char **argenv)
+{
+	char	**arr;
+	int		i;
+
+	i = -1;
+	if (!argenv || !*argenv)
+		return (NULL);
+	arr = malloc(sizeof(char *) * (ft_sarrsize(argenv) + 1));
+	while (argenv[++i])
+		arr[i] = ft_strdup(argenv[i]);
+	arr[i] = NULL;
+	return (arr);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -73,6 +102,7 @@ int	main(int ac, char **av, char **envp)
 	do_signal();
 	ft_bzero(&shell, sizeof(t_shell));
 	import_env(&shell, envp);
+	shell.default_env = duparr(envp);
 	main_loop(&shell);
 	return (EXIT_SUCCESS);
 }

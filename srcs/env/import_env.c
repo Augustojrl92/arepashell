@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:08:00 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/01/07 05:08:01 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/20 23:00:59 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	free_env(t_shell	*shell)
 		node = aux;
 	}
 	ft_free_sarray(shell->path_var);
-	ft_free_sarray(shell->default_env);
+	//ft_free_sarray(shell->default_env);
 }
 
 void	update_default_env(t_shell	*shell)

@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:07:32 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/02/18 15:44:19 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/20 23:10:38 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	exe_path_cmd(t_shell *shell, t_token *token)
 	errno = 0;
 	path_var = find_value(shell->enviroment, "PATH");
 	paths = get_path_var(shell);
-	update_default_env(shell);
 	if (!ft_strchr(token->cmd, '/') && path_var)
 	{
 		free(path_var);
@@ -62,10 +61,8 @@ void	exe_path_cmd(t_shell *shell, t_token *token)
 		if (!access(token->cmd, X_OK))
 		{
 			if (execve(token->cmd, token->args, shell->default_env) == -1)
-				exit(127);
+				exit(set_exit_status(token->cmd, errno));
 		}
 	}
 	ft_free_sarray(paths);
-	ft_free_sarray(shell->default_env);
-	exit(set_exit_status(token->cmd, errno));
 }

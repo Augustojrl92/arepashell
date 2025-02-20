@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:48:49 by layala-s          #+#    #+#             */
-/*   Updated: 2025/02/16 20:18:58 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/20 23:15:18 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,7 +167,6 @@ int		built_in_export(t_shell *shell, t_token	*token);
 
 //Utils
 
-char	*generate_prompt(void);
 void	go_home(t_shell *shell);
 void	do_signal(void);
 int		is_valid_n_flag(const char *arg);

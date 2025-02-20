@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:07:42 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/02/17 18:59:25 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/20 01:56:48 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	wait_childs(t_token *token, int twice)
 {
 	if (twice)
 		wait(&token->shell->exit_status);
-	wait(&token->shell->exit_status);
 	if (WIFEXITED(token->shell->exit_status))
 		token->shell->exit_status = WEXITSTATUS(token->shell->exit_status);
 	else if (WIFSIGNALED(token->shell->exit_status))
