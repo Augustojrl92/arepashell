@@ -61,8 +61,10 @@ void	exe_path_cmd(t_shell *shell, t_token *token)
 		if (!access(token->cmd, X_OK))
 		{
 			if (execve(token->cmd, token->args, shell->default_env) == -1)
-				exit(set_exit_status(token->cmd, errno));
+				exit(127);
 		}
 	}
 	ft_free_sarray(paths);
+	ft_free_sarray(shell->default_env);
+	exit(set_exit_status(token->cmd, errno));
 }
