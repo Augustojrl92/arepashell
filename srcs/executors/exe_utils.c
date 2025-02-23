@@ -88,25 +88,32 @@ void	child_pipe_redir(t_tree *node, t_token *token, int pid, int fd[2])
 	close(fd[READ_END]);
 }
 
+void	do_node(int pid, t_token *token)
+{
+	pid = fork();
+	if (!pid)
+	{
+		signal(SIGINT, SIG_DFL);
+		stdin_redirection(token);
+		stdout_redirection(token);
+		exe_path_cmd(token->shell, token);
+	}
+	else
+	{
+		signal(SIGINT, SIG_IGN);
+		wait_childs(token, FALSE);
+		signal(SIGINT, sighandler);
+	}
+}
+
 void	exe_comand_node(t_token	*token, int pid)
 {
 	if (!token->shell->child)
 	{
 		if (is_built_in(token->cmd))
-		{
 			exe_built_in_with_redirs(token->shell, token);
-		}
 		else
-		{
-			pid = fork();
-			if (!pid)
-			{
-				stdin_redirection(token);
-				stdout_redirection(token);
-				exe_path_cmd(token->shell, token);
-			}
-			wait_childs(token, FALSE);
-		}
+			do_node(pid, token);
 	}
 	else
 	{

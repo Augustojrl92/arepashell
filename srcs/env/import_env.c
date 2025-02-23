@@ -62,7 +62,6 @@ void	free_env(t_shell	*shell)
 		node = aux;
 	}
 	ft_free_sarray(shell->path_var);
-	//ft_free_sarray(shell->default_env);
 }
 
 void	update_default_env(t_shell	*shell)

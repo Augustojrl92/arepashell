@@ -66,7 +66,6 @@ void	main_loop(t_shell	*shell)
 	}
 }
 
-
 int	ft_sarrsize(char **arr)
 {
 	int	size;
@@ -78,6 +77,7 @@ int	ft_sarrsize(char **arr)
 		size++;
 	return (size);
 }
+
 char	**duparr(char **argenv)
 {
 	char	**arr;
@@ -104,5 +104,6 @@ int	main(int ac, char **av, char **envp)
 	import_env(&shell, envp);
 	shell.default_env = duparr(envp);
 	main_loop(&shell);
+	free_env(&shell);
 	return (EXIT_SUCCESS);
 }
