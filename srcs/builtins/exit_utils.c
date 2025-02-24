@@ -14,7 +14,10 @@
 
 void	free_shell(t_shell *shell)
 {
-	(void)shell;
+	if (!shell)
+		return ;
+	free_env(shell);
+	free_tree(shell, shell->token_tree);
 }
 
 int	is_numeric(const char *str)

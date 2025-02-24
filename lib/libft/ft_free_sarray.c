@@ -28,5 +28,4 @@ void	ft_free_sarray(char **array)
 		}
 	}
 	free(array);
-	array = NULL;
 }

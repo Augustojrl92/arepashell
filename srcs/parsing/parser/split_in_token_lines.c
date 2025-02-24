@@ -32,6 +32,7 @@ int	split_in_token_lines(t_shell	*shell)
 	if (input == NULL)
 	{
 		printf(MSG_BYE);
+		free_shell(shell);
 		exit(EXIT_SUCCESS);
 	}
 	if (ft_strncmp(input, "\n", ft_strlen(input)))
@@ -41,9 +42,7 @@ int	split_in_token_lines(t_shell	*shell)
 	a_state = evaluate(&shell->splitter);
 	get_token(&shell->splitter, shell);
 	if (a_state > shell->splitter.errorlen)
-	{
 		return (free_alph_err(&shell->splitter), 1);
-	}
 	else
 	{
 		printf("%s", shell->splitter.errors[a_state]);

@@ -36,8 +36,12 @@ t_var	*create_var(char *name, char *value)
 	t_var	*var;
 
 	var = ft_calloc(1, sizeof(t_var));
-	var->name = name;
-	var->value = value;
+	if (!var)
+		return (NULL);
+	var->name = ft_strdup(name);
+	var->value = ft_strdup(value);
+	free(name);
+	free(value);
 	return (var);
 }
 
@@ -62,6 +66,7 @@ void	free_env(t_shell	*shell)
 		node = aux;
 	}
 	ft_free_sarray(shell->path_var);
+	ft_free_sarray(shell->default_env);
 }
 
 void	update_default_env(t_shell	*shell)

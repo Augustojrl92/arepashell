@@ -177,12 +177,14 @@ void	free_env(t_shell	*shell);
 void	heredoc_handler(int signum);
 int		check_dir(t_shell *shell);
 void	check_and_restore_directory(t_shell *shell);
+void	free_tree(t_shell	*shell, t_tree	*tree);
+void	free_shell(t_shell *shell);
 void	sighandler(int signal);
 void	expand_wildcards_in_args(t_token *token);
 void	expand_wildcards_in_outfiles(t_token *token);
 void	expand_wildcards_in_infiles(t_token *token);
 char	**expand_wildcard_pattern(const char *pattern);
-
+void	free_path(t_shell *shell);
 char	**ft_insert_sarray(char **arr, char **insert, int index);
 int		ft_strcmp(const char *s1, const char *s2);
 //----------------------------------ERROR MSG---------------------------------//

@@ -58,7 +58,7 @@ void	exe_path_cmd(t_shell *shell, t_token *token)
 	}
 	else
 	{
-		if (!access(token->cmd, X_OK))
+		if (access(token->cmd, X_OK) == 0)
 		{
 			if (execve(token->cmd, token->args, shell->default_env) == -1)
 				exit(127);
