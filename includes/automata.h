@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 18:41:30 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/02/12 14:57:19 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:40:31 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void		set_arg(t_automata	*a, void	*data);
 
 //ACTIONS UTILS
 
-char		*get_next_word(t_automata	*a);
+char	*get_next_word(t_automata *a, int remove_quotes);
 
 //STATES ENUMS
 
