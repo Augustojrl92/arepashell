@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 19:09:05 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/02/12 14:58:52 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/24 15:20:28 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*get_next_var(t_automata	*a)
 		return (ft_strdup("?"));
 	if (!ft_isalpha(a->str[i]) && a->str[i] != '_' && a->str[i] != '?')
 		return (ft_strdup("$"));
-	while (a->str[i] != '\0' && ft_strchr(" \t\n.:;@-+=#/(){}[]\"\'^*\\?$",
+	while (a->str[i] != '\0' && ft_strchr(" \t\n.,:;@-+\"=#/(){}[]\"\'^*\\?$",
 			a->str[i]) == NULL)
 	{
 		i++;
