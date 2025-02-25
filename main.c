@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 05:08:10 by aurodrig          #+#    #+#             */
-/*   Updated: 2025/02/20 23:09:23 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/25 22:00:12 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char	**duparr(char **argenv)
 int	main(int ac, char **av, char **envp)
 {
 	t_shell	shell;
-
+	shell.main_pid = getpid(); //agregue esto
 	(void)ac;
 	(void)av;
 	do_signal();

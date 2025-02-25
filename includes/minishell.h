@@ -6,7 +6,7 @@
 /*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 10:48:49 by layala-s          #+#    #+#             */
-/*   Updated: 2025/02/20 23:15:18 by aurodrig         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:59:51 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ typedef struct s_shell
 	char		**default_env;
 	char		**path_var;
 	char		*last_path;
+	pid_t   	main_pid; //agregue esto
 }	t_shell;
 
 typedef struct s_token
@@ -118,6 +119,9 @@ typedef struct s_var
 	char		*name;
 	char		*value;
 }	t_var;
+
+
+
 
 //----------------------------------FUNCTIONS---------------------------------//
 

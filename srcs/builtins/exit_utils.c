@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: layala-s <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aurodrig <aurodrig@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 12:24:02 by layala-s          #+#    #+#             */
-/*   Updated: 2025/01/27 12:24:03 by layala-s         ###   ########.fr       */
+/*   Updated: 2025/02/25 22:01:10 by aurodrig         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,11 @@ int	do_exit(t_token *token)
 	}
 	else
 		exit_code = g_signal_data;
-	free_shell(token->shell);
-	printf(" VALOR DESPUES %d\n", token->is_pipe);
-	if (token->is_pipe == 0)
-		printf("exit\n");
+	if (getpid() == token->shell->main_pid)//agregue esto
+        printf("exit\n");//agregue esto
+	// free_shell(token->shell);
+	// printf(" VALOR DESPUES %d\n", token->is_pipe);
+	// if (token->is_pipe == 0)
+	// 	printf("exit\n");
 	exit(exit_code);
 }
