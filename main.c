@@ -14,24 +14,6 @@
 
 int	g_signal_data = 0;
 
-void	free_token(void	*data)
-{
-	t_token	*token;
-
-	token = data;
-	free(token->line);
-	free(token->cmd);
-	if (token->args)
-		ft_free_sarray(token->args);
-	if (token->outfiles)
-		ft_free_sarray(token->outfiles);
-	if (token->infiles)
-		ft_free_sarray(token->infiles);
-	if (token->heredoc)
-		ft_free_sarray(token->heredoc);
-	free(token);
-}
-
 void	free_tree(t_shell	*shell, t_tree	*tree)
 {
 	if (tree != NULL)
@@ -44,7 +26,6 @@ void	free_tree(t_shell	*shell, t_tree	*tree)
 	}
 }
 
-// Bucle principal
 void	main_loop(t_shell	*shell)
 {
 	while (1)

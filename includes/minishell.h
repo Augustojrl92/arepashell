@@ -107,6 +107,7 @@ typedef struct s_token
 	char		**heredoc;
 	char		**outfiles;
 	int			last_outf_fd;
+	int			is_pipe;
 	int			last_inf_fd;
 	void		*data;
 }	t_token;
@@ -187,6 +188,9 @@ char	**expand_wildcard_pattern(const char *pattern);
 void	free_path(t_shell *shell);
 char	**ft_insert_sarray(char **arr, char **insert, int index);
 int		ft_strcmp(const char *s1, const char *s2);
+void	do_last_folder(t_shell *shell, char *cwd);
+void	free_token(void	*data);
+
 //----------------------------------ERROR MSG---------------------------------//
 
 # define ERROR_EXIT 	"EXIT\n"

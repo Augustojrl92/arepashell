@@ -27,3 +27,14 @@ int	is_valid_n_flag(const char *arg)
 	}
 	return (1);
 }
+
+void	do_last_folder(t_shell *shell, char *cwd)
+{
+	printf("%s\n", shell->last_path);
+	chdir(shell->last_path);
+	if (shell->last_path)
+		free(shell->last_path);
+	shell->last_path = ft_strdup(cwd);
+	if (!shell->last_path)
+		perror("cd: memory allocation failed");
+}

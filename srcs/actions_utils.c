@@ -55,12 +55,10 @@ char	*get_next_word(t_automata *a, int remove_quotes)
 	trim = ft_strtrim(substr, " \t\n");
 	free(substr);
 	a->j = a->i;
-
-	// Si remove_quotes es verdadero y el token está rodeado de comillas, quítalas.
 	if (remove_quotes && trim && ft_strlen(trim) >= 2)
 	{
-		if ((trim[0] == '\'' && trim[ft_strlen(trim) - 1] == '\'') ||
-		    (trim[0] == '\"' && trim[ft_strlen(trim) - 1] == '\"'))
+		if ((trim[0] == '\'' && trim[ft_strlen(trim) - 1] == '\'')
+			|| (trim[0] == '\"' && trim[ft_strlen(trim) - 1] == '\"'))
 		{
 			final = ft_substr(trim, 1, ft_strlen(trim) - 2);
 			free(trim);

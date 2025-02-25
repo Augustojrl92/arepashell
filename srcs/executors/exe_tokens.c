@@ -61,11 +61,14 @@ void	exe_minishell_recursive(t_tree	*node)
 	if (!node)
 		exit(EXIT_SUCCESS);
 	token = (t_token *)node->data;
+	token->is_pipe = 0;
+	printf("VALOR AQUÍ %d\n", token->is_pipe);
 	pid = 0;
 	if (ft_samestr(token->line, PIPE_LINE))
 	{
 		if (pipe(fd) == -1)
 			return ;
+		token->is_pipe = 1;
 		child_pipe_redir(node, token, pid, fd);
 		wait_childs(token, TRUE);
 	}

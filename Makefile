@@ -3,7 +3,7 @@ NAME = minishell
 
 # Compilador y flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3 
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 # Comando para eliminar
 RM = rm -rf

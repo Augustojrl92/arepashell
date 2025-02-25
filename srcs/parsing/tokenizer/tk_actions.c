@@ -19,12 +19,10 @@ void	set_infile(t_automata *a, void *data)
 	char	*temp_filename;
 
 	token = (t_token *)data;
-	// Si el estado indica heredoc, removemos las comillas:
 	if (a->ostate == TK_HEREDOC)
 		infile = get_next_word(a, 1);
 	else
 		infile = get_next_word(a, 0);
-	
 	if (a->ostate == TK_HEREDOC)
 	{
 		temp_filename = do_heredoc(infile, token);

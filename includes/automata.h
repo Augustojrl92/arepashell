@@ -73,7 +73,7 @@ void		set_arg(t_automata	*a, void	*data);
 
 //ACTIONS UTILS
 
-char	*get_next_word(t_automata *a, int remove_quotes);
+char		*get_next_word(t_automata *a, int remove_quotes);
 
 //STATES ENUMS
 

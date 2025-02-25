@@ -12,6 +12,24 @@
 
 #include "../../includes/minishell.h"
 
+void	free_token(void	*data)
+{
+	t_token	*token;
+
+	token = data;
+	free(token->line);
+	free(token->cmd);
+	if (token->args)
+		ft_free_sarray(token->args);
+	if (token->outfiles)
+		ft_free_sarray(token->outfiles);
+	if (token->infiles)
+		ft_free_sarray(token->infiles);
+	if (token->heredoc)
+		ft_free_sarray(token->heredoc);
+	free(token);
+}
+
 void	free_shell(t_shell *shell)
 {
 	if (!shell)
@@ -62,5 +80,8 @@ int	do_exit(t_token *token)
 	else
 		exit_code = g_signal_data;
 	free_shell(token->shell);
+	printf(" VALOR DESPUES %d\n", token->is_pipe);
+	if (token->is_pipe == 0)
+		printf("exit\n");
 	exit(exit_code);
 }
