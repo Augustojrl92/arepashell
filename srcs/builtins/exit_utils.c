@@ -79,11 +79,7 @@ int	do_exit(t_token *token)
 	}
 	else
 		exit_code = g_signal_data;
-	if (getpid() == token->shell->main_pid)//agregue esto
-        printf("exit\n");//agregue esto
-	// free_shell(token->shell);
-	// printf(" VALOR DESPUES %d\n", token->is_pipe);
-	// if (token->is_pipe == 0)
-	// 	printf("exit\n");
+	if (getpid() == token->shell->main_pid)
+		printf("exit\n");
 	exit(exit_code);
 }

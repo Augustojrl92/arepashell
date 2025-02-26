@@ -77,11 +77,12 @@ char	**duparr(char **argenv)
 int	main(int ac, char **av, char **envp)
 {
 	t_shell	shell;
-	shell.main_pid = getpid(); //agregue esto
+
 	(void)ac;
 	(void)av;
 	do_signal();
 	ft_bzero(&shell, sizeof(t_shell));
+	shell.main_pid = getpid();
 	import_env(&shell, envp);
 	shell.default_env = duparr(envp);
 	main_loop(&shell);

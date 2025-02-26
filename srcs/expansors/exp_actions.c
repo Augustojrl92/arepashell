@@ -19,6 +19,8 @@ char	*get_next_var(t_automata	*a)
 
 	i = a->i + 1;
 	j = 0;
+	if (a->str[i] == '$')
+		return (ft_strdup("$$"));
 	if (a->str[i] == '?')
 		return (ft_strdup("?"));
 	if (!ft_isalpha(a->str[i]) && a->str[i] != '_' && a->str[i] != '?')
@@ -42,7 +44,9 @@ void	insert_var(t_automata *a, void *data)
 	token = (t_token *)data;
 	pointer = (char **)token->data;
 	var = get_next_var(a);
-	if (ft_samestr(var, "$"))
+	if (ft_samestr(var, "$$"))
+		str = ft_itoa(getpid());
+	else if (ft_samestr(var, "$"))
 		str = ft_strdup("$");
 	else
 		str = find_value(token->shell->enviroment, var);

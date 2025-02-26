@@ -94,7 +94,7 @@ typedef struct s_shell
 	char		**default_env;
 	char		**path_var;
 	char		*last_path;
-	pid_t   	main_pid; //agregue esto
+	pid_t		main_pid;
 }	t_shell;
 
 typedef struct s_token
@@ -119,9 +119,6 @@ typedef struct s_var
 	char		*name;
 	char		*value;
 }	t_var;
-
-
-
 
 //----------------------------------FUNCTIONS---------------------------------//
 
