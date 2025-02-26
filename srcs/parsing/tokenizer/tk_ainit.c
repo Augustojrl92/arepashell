@@ -46,10 +46,10 @@ int	tokenizer_get_state(int i, int j)
 void	tokenizer_errors_init(t_automata *a)
 {
 	a->errors = malloc(5 * (sizeof(char *)));
-	a->errors[0] = ft_strdup("Empty string.");
-	a->errors[1] = ft_strdup("\" Open");
-	a->errors[2] = ft_strdup("\' Open");
-	a->errors[3] = ft_strdup("Invalid Input tk");
+	a->errors[0] = ft_strdup("Empty string.\n");
+	a->errors[1] = ft_strdup("\" Open\n");
+	a->errors[2] = ft_strdup("\' Open\n");
+	a->errors[3] = ft_strdup("Invalid Input tk\n");
 	a->errors[4] = NULL;
 	a->errorlen = 4;
 }

@@ -50,15 +50,15 @@ void	splitter_errors_init(t_automata *a)
 {
 	a->errors = malloc(11 * (sizeof(char *)));
 	a->errors[0] = ft_strdup("\033[B");
-	a->errors[1] = ft_strdup("Pipe Open");
-	a->errors[2] = ft_strdup("Less Open");
-	a->errors[3] = ft_strdup("Heredoc Open");
-	a->errors[4] = ft_strdup("Great Open");
-	a->errors[5] = ft_strdup("Append Open");
-	a->errors[6] = ft_strdup("\" Open");
-	a->errors[7] = ft_strdup("\' Open");
-	a->errors[8] = ft_strdup("Invalid Input");
-	a->errors[9] = ft_strdup("Open operator");
+	a->errors[1] = ft_strdup("Pipe Open\n");
+	a->errors[2] = ft_strdup("Less Open\n");
+	a->errors[3] = ft_strdup("Heredoc Open\n");
+	a->errors[4] = ft_strdup("Great Open\n");
+	a->errors[5] = ft_strdup("Append Open\n");
+	a->errors[6] = ft_strdup("\" Open\n");
+	a->errors[7] = ft_strdup("\' Open\n");
+	a->errors[8] = ft_strdup("Invalid Input\n");
+	a->errors[9] = ft_strdup("Open operator\n");
 	a->errors[10] = NULL;
 	a->errorlen = 9;
 }
